@@ -1,4 +1,5 @@
 TeamManager::Application.routes.draw do
+  get "usages/list"
   devise_for :users
   get "dashbords/home"
   # The priority is based upon order of creation: first created -> highest priority.
