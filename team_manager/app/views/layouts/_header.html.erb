@@ -14,23 +14,31 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Materials</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Members<b class="caret"></b></a>
+
+		<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Projects<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
+            <li><a href="#">稼働中のプロジェクト</a></li>
+            <li><a href="#">過去のプロジェクト</a></li>
             <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
+            <li><a href="#">先代のプロジェクト</a></li>
           </ul>
         </li>
-        <li><a href="#">Contact</a></li>
+		
+		<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Materials<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">勉強会資料</a></li>
+            <li><a href="#">議事録</a></li>
+            <li class="divider"></li>
+            <li><a href="#">引き継ぎ資料</a></li>
+          </ul>
+        </li>
+        
+		<li><a href="#">Contact</a></li>
         <li><%= link_to 'Usage', usages_list_path %></li>
-      </ul>
+      
+	  </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Menu<b class="caret"></b></a>
