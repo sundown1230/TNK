@@ -3,13 +3,13 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)	
+    @project = Project.new(params[:project])	
     @project.save
     redirect_to @project
   end
 
   def index
-    @projects = Project.all
+  @project = Project.all
   end
 
   def show
