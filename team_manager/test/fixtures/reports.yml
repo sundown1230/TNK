@@ -2,10 +2,12 @@
 
 one:
   user_id: 
+  text: 
   title: 
-  text: MyText
+  project_id: 
 
 two:
   user_id: 
+  text: 
   title: 
-  text: MyText
+  project_id: 
