@@ -4,6 +4,40 @@
 </p>
  
 <p>
-  <strong>Text:</strong>
-  <%= @project.text %>
+  <strong>Description:</strong>
+  <%= @project.description %>
 </p>
+
+<h2>レポート一覧</h2>
+<% @project.reports.each do |report| %>
+  <p>
+    <strong>title:</strong>
+    <%= report.title %>
+  </p>
+ 
+  <p>
+    <strong>Author:</strong>
+    <%= report.text %>
+  </p>
+<% end %>
+
+<h2>レポートを追加する</h2>
+<%= form_for([@project, @project.reports.build]) do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </p>
+  <p>
+    <%= f.label :text %><br>
+    <%= f.text_area :text %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+<%= link_to 'プロジェクト一覧に戻る', projects_path %>
+| <%= link_to 'プロジェクト内容を編集する', edit_project_path(@project) %>
