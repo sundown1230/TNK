@@ -10,10 +10,9 @@
  
   <% @projects.each do |project| %>
     <tr>
-      <td><%= project.title %></td>
+      <td><%= link_to  project.title ,project_path(project) %></td>
       <td><%= project.description %></td>
       <td>PMの名前</td>
-      <td><%= link_to '詳細', project_path(project) %></td>
       <td><%= link_to '編集', edit_project_path(project) %></td>
 	  <td><%= link_to '削除', project_path(project), 
 	          method: :delete, data: { confirm: '本当によろしいですか？' } %></td>
