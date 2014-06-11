@@ -1,4 +1,7 @@
 TeamManager::Application.routes.draw do
+  get "materials/index"
+  get "materials/edit"
+  get "materials/new"
   root "dashbords#home"
   get "users/index"
   get "static_pages/contact"
