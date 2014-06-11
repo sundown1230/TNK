@@ -1,4 +1,5 @@
 TeamManager::Application.routes.draw do
+  get "users/index"
   root "dashbords#home"
   get "usages/list"
   devise_for :users
