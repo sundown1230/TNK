@@ -1,2 +1,16 @@
-<h1>Materials#new</h1>
-<p>Find me in app/views/materials/new.html.erb</p>
+<h1>Materials</h1>
+<%= form_for :material do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= f.label :text %><br>
+    <%= f.text_area :text %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
