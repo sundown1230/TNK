@@ -16,38 +16,31 @@
       <ul class="nav navbar-nav">
 
 		<li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Projects<b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">プロジェクト<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">稼働中のプロジェクト</a></li>
+            <li><%= link_to 'プロジェクト一覧', projects_path %></li>
             <li><a href="#">過去のプロジェクト</a></li>
-            <li class="divider"></li>
-            <li><a href="#">先代のプロジェクト</a></li>
           </ul>
         </li>
 		
 		<li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Materials<b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">資料<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">勉強会資料</a></li>
+            <li><a href="#">一覧資料</a></li>
             <li><a href="#">議事録</a></li>
             <li class="divider"></li>
             <li><a href="#">引き継ぎ資料</a></li>
           </ul>
         </li>
         
-		<li><%= link_to 'Members', users_path %></li>
-		<li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Helps<b class="caret"></b></a>
-          <ul class="dropdown-menu">    
-            <li><%= link_to '連絡', static_pages_contact_path %></li>
-            <li><%= link_to '使い方Wiki', static_pages_usage_path %></li>	
-          </ul>
-        </li>
+		<li><%= link_to 'メンバー', users_path %></li>
+		<li><%= link_to '連絡', static_pages_contact_path %></li>
+        <li><%= link_to '使い方Wiki', static_pages_usage_path %></li>	
       
 	  </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>My Menu<b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>マイメニュー<b class="caret"></b></a>
           <ul class="dropdown-menu">
 	        <% if user_signed_in? %>
 	          <li><a href="#"><%= current_user.email %></a></li>
