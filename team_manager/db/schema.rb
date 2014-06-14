@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140613154634) do
+ActiveRecord::Schema.define(version: 20140614043326) do
 
   create_table "materials", force: true do |t|
     t.string   "title",      default: "title", null: false
@@ -59,6 +59,10 @@ ActiveRecord::Schema.define(version: 20140613154634) do
     t.datetime "updated_at"
     t.string   "username"
     t.string   "description",            default: "歴代最強",    null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
