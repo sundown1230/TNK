@@ -11,7 +11,7 @@
   <% @users.each do |user| %>
     <tr>
 	  <td><%= image_tag user.avatar.url(:thumb) %></td>
-      <td><%= user.name %></td>
+      <td><%= link_to user.name, user_path(user) %></td>
       <td><%= user.generation %></td>
       <td><%= user.description %></td>   
       <td><%= user.email %></td>
