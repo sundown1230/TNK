@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates :generation, presence: true
   validates :name, presence: true
 
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "50x50>" }, :default_url => "default/avatar.jpg"
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "60x60>" }, :default_url => "defaults/avatar.jpg"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
 end
