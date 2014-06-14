@@ -1,0 +1,12 @@
+<p>
+  <strong>Title:</strong>
+  <%= @material.title %>
+</p>
+ 
+<p>
+  <strong>Text:</strong>
+  <%= @material.text %>
+</p>
+<%= link_to '資料一覧に戻る', materials_path %>
+| <%= link_to '編集する', edit_material_path(@material) %>
+
