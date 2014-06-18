@@ -1,0 +1,19 @@
+<h1>Listing Projects</h1>
+<%= link_to '新規プロジェクトの作成', new_project_path %> 
+<table class="table table-default">
+  <tr>
+    <th>プロジェクト名</th>
+    <th>概要</th>
+	<th>PM</th>
+  </tr>
+ 
+  <% @projects.each do |project| %>
+    <tr>
+      <td><%= project.title %></td>
+      <td><%= project.description %></td>
+      <td>PMの名前</td>
+      <td><%= link_to '詳細', project_path(@project) %></td>
+      <td><%= link_to '編集', edit_project_path(@project) %></td>
+    </tr>
+  <% end %>
+</table>

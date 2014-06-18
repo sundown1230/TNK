@@ -1,0 +1,20 @@
+<h1>資料一覧</h1>
+
+<%= link_to "新規ドキュメントの作成", new_material_path %>
+<table class="table">
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th colspan="2"></th>
+  </tr>
+ 
+  <% @materials.each do |material| %>
+    <tr>
+      <td><%= material.title %></td>
+      <td><%= material.text %></td>
+      <td><%= link_to '詳細', material_path(material) %></td>
+      <td><%= link_to '編集', edit_material_path(material) %></td>
+      <td><%= link_to '削除', material_path(material), method: :delete, data: { confirm: '本当によろしいですか？' } %></td>
+    </tr>
+  <% end %>
+</table>
