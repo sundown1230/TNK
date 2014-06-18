@@ -1,4 +1,7 @@
 #TNK地の統合化PJ
+###メンバー
+10期：松永(PM)
+11期：比留間、山村
 
 
 
@@ -18,6 +21,8 @@ bundle exec rake db:create
 ```
 bundle exec rak db:migrate RAILS_ENV=development
 ```
+
+
 
 
 ## 作業の基本フロー
@@ -42,6 +47,6 @@ git push origin 作業ブランチ名
 ```
 githubでpull requestを出す。
 pull requestはmasterブランチに対してではなく、developmentブランチに対して行うこと。
-チームメンバー全員が確認したらmasterにmerge
+チームメンバー全員が確認したらdevelopmentにmerge
 
 
