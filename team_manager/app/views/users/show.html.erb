@@ -1,0 +1,19 @@
+<center>
+  <h3><%= @user.name %></h3>
+  <%= image_tag @user.avatar.url %>
+</center>
+<br>
+<table class="table">
+  <tr>
+    <td style="width:200px;">代</td>
+	<td><%= @user.generation%></td>
+  </tr>
+  <tr>
+    <td style="width:200px;">一言コメント</td>
+	<td><%= @user.description%></td>
+  </tr>
+  <tr>
+    <td style="width:200px;">連絡先</td>
+    <td><%= @user.email %></td>
+  </tr>
+</table>

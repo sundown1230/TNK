@@ -1,7 +1,20 @@
 TeamManager::Application.routes.draw do
-  get "usages/list"
-  devise_for :users
+  get "materials/index"
+  get "materials/edit"
+  get "materials/new"
+  root "dashbords#home"
+  get "users/index"
+  get "static_pages/contact"
+  get "static_pages/usage"
   get "dashbords/home"
+
+  devise_for :users
+  resources :projects do
+    resources :reports
+  end
+  resources :users
+
+  resources :materials
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

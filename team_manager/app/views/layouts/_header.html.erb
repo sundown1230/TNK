@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-inverse" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -14,35 +14,46 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Materials</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Members<b class="caret"></b></a>
+
+		<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">プロジェクト<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
+            <li><%= link_to 'プロジェクト一覧', projects_path %></li>
+            <li><a href="#">過去のプロジェクト</a></li>
           </ul>
         </li>
-        <li><a href="#">Contact</a></li>
-        <li><%= link_to 'Usage', usages_list_path %></li>
-      </ul>
+		
+		<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">資料<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to '資料一覧', materials_path %></li>
+            <li><a href="#">議事録</a></li>
+            <li class="divider"></li>
+            <li><a href="#">引き継ぎ資料</a></li>
+          </ul>
+        </li>
+        
+		<li><%= link_to 'メンバー', users_path %></li>
+		<li><%= link_to '連絡', static_pages_contact_path %></li>
+        <li><%= link_to '使い方Wiki', static_pages_usage_path %></li>	
+      
+	  </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Menu<b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>マイメニュー<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+	        <% if user_signed_in? %>
+	          <li><a href="#"><%= current_user.email %></a></li>
+	          <li><%= link_to 'Edit profile', edit_user_registration_path, class: 'navbar-link' %></li> 
+              <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-link' %></li>
+	        <% else %>
+	          <li><%= link_to "Sign up", new_user_registration_path, class: 'navbar-link' %></li> 
+	          <li><%= link_to "Login", new_user_session_path, class: 'navbar-link' %></li>
+	        <% end %>
           </ul>
         </li>
       </ul>
+	  <p class="navbar-text pull-right">
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
