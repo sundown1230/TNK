@@ -2,7 +2,7 @@
 
 
 
-### railsに関する操作
+## railsに関する操作
 
 #### railsサーバーをローカルで起動するとき
 ```
@@ -20,7 +20,7 @@ bundle exec rak db:migrate RAILS_ENV=development
 ```
 
 
-### 作業の基本フロー
+## 作業の基本フロー
 
 #### 初めて作業をするとき
 ```
