@@ -38,6 +38,7 @@ httpsとsshの２つのclone方法がありますが、httpsにするとpushす�
 
 ```
 git checkout development
+git pull origin development
 git checkout -b 新しいブランチ名
 ```
 
@@ -46,7 +47,7 @@ git checkout -b 新しいブランチ名
 git push origin 作業ブランチ名
 ```
 githubでpull requestを出す。
-pull requestはmasterブランチに対してではなく、developmentブランチに対して行うこと。
+pull requestはmasterブランチに対してではなく、developmentブランチに対して行うこと。(デフォルトではmasterブランチになっている)
 チームメンバー全員が確認したらdevelopmentにmerge
 
 
