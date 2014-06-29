@@ -19,7 +19,16 @@
     <%= f.label :text %><br>
     <%= f.text_area :text %>
   </p>
- 
+
+  <%= f.fields_for :matterial_users  do |mu| %>
+    <p>
+      <%= mu.label :user_id %><br>
+	  <% users = User.first %>
+      <%= mu.collection_select :user_id, User.all, :id, :name %>
+	  <%= User.first.name%>
+    </p>
+  <% end %>
+  
   <p>
     <%= f.submit %>
   </p>
