@@ -1,6 +1,7 @@
 class MaterialsController < ApplicationController
-def new
+  def new
     @material = Material.new
+	@users = Users.all
   end
 
   def create
@@ -41,6 +42,6 @@ def new
 
   private
     def material_params
-	  params.require(:material).permit(:title, :text)
+	  params.require(:material).permit(:title, :text, users_attributes: [:name, :email])
 	end
 end

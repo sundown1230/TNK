@@ -13,4 +13,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  private
+    def user_params
+	  params.require(:user).permit(:title, :text, material_attribute: [:title, :title])
+
 end
