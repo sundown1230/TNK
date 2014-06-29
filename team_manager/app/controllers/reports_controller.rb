@@ -4,6 +4,13 @@ class ReportsController < ApplicationController
     @report = @project.reports.create(report_params)
     redirect_to project_path(@project)
   end
+
+  def destroy
+    @project = Project.find(params[:project_id])
+    @report = @project.reports.find(params[:id])
+    @report.destroy
+    redirect_to project_path(@project)
+  end
  
   private
     def report_params
