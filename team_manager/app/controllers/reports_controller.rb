@@ -7,9 +7,9 @@ class ReportsController < ApplicationController
 
   def destroy
     @project = Project.find(params[:project_id])
-	@report = @project.reports.find(params[:id])
-	@report.destroy
-	redirect_to project_path(@project)
+    @report = @project.reports.find(params[:id])
+    @report.destroy
+    redirect_to project_path(@project)
   end
  
   private
