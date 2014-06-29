@@ -10,6 +10,7 @@ class ReportsController < ApplicationController
 	@report = @project.reports.find(params[:id])
 	@report.destroy
 	redirect_to project_path(@project)
+  end
  
   private
     def report_params
