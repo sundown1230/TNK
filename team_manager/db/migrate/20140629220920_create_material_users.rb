@@ -1,8 +1,9 @@
 class CreateMaterialUsers < ActiveRecord::Migration
   def change
-    create_table :material_users, id: false do |t|
-	  t.belongs_to :material, null:false
+    create_table :material_users do |t|
 	  t.belongs_to :user, null:false
-    end
+	  t.belongs_to :material, null:false
+      t.timestamps
+	end
   end
 end

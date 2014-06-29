@@ -11,11 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140629214528) do
+ActiveRecord::Schema.define(version: 20140629220920) do
 
-  create_table "material_users", id: false, force: true do |t|
-    t.integer "material_id", null: false
-    t.integer "user_id",     null: false
+  create_table "material_users", force: true do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "material_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "materials", force: true do |t|
