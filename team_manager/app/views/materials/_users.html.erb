@@ -1,4 +1,4 @@
-<h5>【レポート一覧】</h5>
+<h5>関連ユーザー</h5>
 <table class="table">
   <tr>
 	<th>Name</th>
@@ -7,7 +7,7 @@
   <% @material.users.each do |user| %>
   <tr>
 	<td><%= user.name %></td>
-    <td><%= user.email %></td>
+	<td><%= user.email %></td>
   </tr>
   <% end %>
 </table>
