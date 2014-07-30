@@ -32,6 +32,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'rolify'
+gem 'authority'
 gem 'devise'
 gem 'mysql2'
 gem "paperclip", "~> 4.1"
