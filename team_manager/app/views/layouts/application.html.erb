@@ -15,11 +15,6 @@
 <body>
   <div id="wrap">
     <%= render partial: 'layouts/header' %>
-    <% if @user.has_role? :admin %>
-	   管理者٩( ’ω’ )وﾖｯｼｬ!
-	<% else %>
-	   管理者じゃない( ◞‸◟)۶ﾖｯｼｬ!
-	<% end %>
 	<div class="container">
       <%= yield %>
     </div>
