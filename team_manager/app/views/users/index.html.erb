@@ -6,6 +6,7 @@
     <th>代</th>
     <th>一言コメント</th>
     <th>email</th>
+	<th>Authority</th>
   </tr>
  
   <% @users.each do |user| %>
@@ -15,6 +16,13 @@
       <td><%= user.generation %></td>
       <td><%= user.description %></td>   
       <td><%= user.email %></td>
+	  <td>
+	  <% if user.has_role? :admin %>
+	     ( ’ω’ )ﻭﾖｯｼｬ!
+      <% else %>
+	     ( ◞‸◟)
+	  <% end %>
+	  </td>
     </tr>
   <% end %>
 </table>
