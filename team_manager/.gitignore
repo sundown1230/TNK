@@ -17,3 +17,5 @@
 
 # Ignore user's avatar pictures
 /publish/system/users
+
+/Gemfile.lock
