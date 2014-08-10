@@ -19,7 +19,7 @@ class MaterialsController < ApplicationController
 
   def show
     @material = Material.find(params[:id])
-	@material_users_ids = @material.material_users.all
+	@material_users = @material.users.all
   end
 
   def edit
