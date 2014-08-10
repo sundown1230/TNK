@@ -6,8 +6,6 @@ class MaterialsController < ApplicationController
 
   def create
     @material = Material.new(material_params)
-	#@material.users.build(params[:user_ids])
-	@material.material_users.build(params[:user_id])
     if @material.save
       redirect_to @material
 	else
@@ -44,6 +42,6 @@ class MaterialsController < ApplicationController
 
   private
     def material_params
-	  params.require(:material).permit(:id, :title, :text, users_attribute: [:id, :name], material_users_attribute: [:material_id, :user_id, :id])
+	  params.require(:material).permit(:id, :title, :text, users_attributes: [:id, :name], material_users_attributes: [:id, :user_id, :material_id])
 	end
 end

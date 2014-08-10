@@ -21,8 +21,7 @@
   </p>
   <%= f.fields_for :material_users  do |mu| %>
     <p>
-	  <%= mu %>
-      <%= mu.label :user_id %><br>
+      関連ユーザー<br>
       <%= mu.collection_select :user_id, User.all, :id, :name %>
     </p>
   <% end %>
