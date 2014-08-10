@@ -8,6 +8,12 @@
   <%= @material.text %>
 </p>
 
+<p>
+  <strong>Users:</strong> 
+  <% @material_users_ids.each do |user| %>
+  <%= user.id %><br>
+  <% end %>
+</p>
 <%= render 'users' %>
 <%= link_to '資料一覧に戻る', materials_path %>
 | <%= link_to '編集する', edit_material_path(@material) %>
