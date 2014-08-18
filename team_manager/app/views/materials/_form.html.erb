@@ -19,11 +19,9 @@
     <%= f.label :text %><br>
     <%= f.text_area :text %>
   </p>
+  関連ユーザー<br>
   <%= f.fields_for :material_users  do |mu| %>
-    <p>
-      関連ユーザー<br>
-      <%= mu.collection_select :user_id, User.all, :id, :name %>
-    </p>
+    <%= mu.collection_select :user_id, User.all, :id, :name %>
   <% end %>
   
   <p>
