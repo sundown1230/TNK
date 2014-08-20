@@ -9,8 +9,8 @@ development:
   charset: utf8
   database: team_manager_development
   pool: 5
-  user: root
-  password: root
+  user: hiruma
+  password: pasc1623
   timeout: 5000
   host: localhost
 
@@ -23,8 +23,8 @@ test:
   charset: utf8
   database: team_manager_test
   pool: 5
-  user: root
-  password: root
+  user: hiruma
+  password: pasc1623
   timeout: 5000
   host: localhost
 
@@ -34,7 +34,7 @@ production:
   charset: utf8
   database: team_manager_test
   pool: 5
-  user: root
-  password: root
+  user: hiruma
+  password: pasc1623
   timeout: 5000
   host: localhost
