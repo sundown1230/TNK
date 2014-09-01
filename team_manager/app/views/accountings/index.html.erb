@@ -1,0 +1,21 @@
+<h1>経理申請 一覧</h1>
+<%= link_to '新規経理申請', new_accounting_path %>
+<table class="table table-default">
+  <tr>
+    <th>概要</th>
+    <th>申請者氏名</th>
+    <th>日付</th>
+    <th colspan="3">
+   </tr>
+   <% @accountings.each do |accounting| %>
+    <tr>
+      <td><%= link_to accounting.title ,accounting_path(accounting) %></td>
+      <td><%= accounting.name %></td>
+      <td><%= accounting.date %></td>
+      <td><%= link_to '編集',edit_accounting_path(accounting) %></td>
+      <td><%= link_to '削除',accounting_path(accounting),
+              method: :delete, data:{ confirm: ''} %></td>
+    </tr>
+  <% end %>
+</table>
+

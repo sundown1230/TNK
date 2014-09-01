@@ -1,0 +1,22 @@
+<p>
+  <strong>Title:</strong>
+  <%= @accounting.title %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @accounting.name %>
+</p>
+<p>
+  <strong>Date:</strong>
+  <%= @accounting.date %>
+  </p>
+<p>
+  <strong>Purpose:</strong>
+  <%= @accounting.purpose %>
+</p>
+
+
+
+<%= link_to '経理申請 一覧に戻る', accountings_path %>
+<%= link_to '経理申請内容を編集する', edit_accounting_path(@accounting) %>
+
