@@ -17,3 +17,6 @@
 
 # Ignore user's avatar pictures
 /publish/system/users
+
+# Ignore database configuration data
+/config/database.yml
