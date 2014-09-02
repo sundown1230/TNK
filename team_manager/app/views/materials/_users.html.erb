@@ -2,11 +2,13 @@
 <table class="table">
   <tr>
 	<th>Name</th>
+	<th>Generation</th>
 	<th>Email</th>
   </tr>
-  <% @material.users.each do |user| %>
+  <% @material_users.each do |user| %>
   <tr>
 	<td><%= user.name %></td>
+	<td><%= user.generation %></td>
 	<td><%= user.email %></td>
   </tr>
   <% end %>

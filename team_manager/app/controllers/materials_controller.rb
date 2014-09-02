@@ -1,7 +1,7 @@
 class MaterialsController < ApplicationController
   def new
     @material = Material.new
-	@material.material_users.build
+	4.times { @material.material_users.build }
   end
 
   def create
@@ -19,7 +19,7 @@ class MaterialsController < ApplicationController
 
   def show
     @material = Material.find(params[:id])
-	@material_users_ids = @material.material_users.all
+	@material_users = @material.users.all
   end
 
   def edit
