@@ -1,10 +1,11 @@
 class MaterialsController < ApplicationController
-def new
+  def new
     @material = Material.new
+	@material.material_users.build
   end
 
   def create
-    @material = Material.new(material_params)	
+    @material = Material.new(material_params)
     if @material.save
       redirect_to @material
 	else
@@ -18,6 +19,7 @@ def new
 
   def show
     @material = Material.find(params[:id])
+	@material_users_ids = @material.material_users.all
   end
 
   def edit
@@ -41,6 +43,6 @@ def new
 
   private
     def material_params
-	  params.require(:material).permit(:title, :text)
+	  params.require(:material).permit(:id, :title, :text, users_attributes: [:id, :name], material_users_attributes: [:id, :user_id, :material_id])
 	end
 end
