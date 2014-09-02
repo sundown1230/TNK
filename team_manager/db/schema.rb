@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20140804123849) do
   create_table "material_users", force: true do |t|
     t.integer  "user_id",     null: false
     t.integer  "material_id", null: false
-
+  
   create_table "accountings", force: true do |t|
     t.string   "title"
     t.string   "name"
