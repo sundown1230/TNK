@@ -1,0 +1,11 @@
+<h5>【タスク一覧】</h5>
+  <table class="table">
+    <tr>
+	  <th>タスク</th>
+    </tr>
+    <% @project.tasks.each do |task| %>
+    <tr>
+	  <td><%= task.title %></td>
+    </tr>
+    <% end %>
+  </table>
