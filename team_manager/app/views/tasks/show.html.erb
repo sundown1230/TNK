@@ -1,0 +1,17 @@
+<h2><%= @project.title %></h2>
+<p>
+  <strong>Title:</strong>
+  <%= @task.title %>
+</p>
+ 
+<p>
+  <strong>Due:</strong>
+  <%= @task.due %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @task.due %>
+</p>
+<%= link_to 'プロジェクトページに戻る', project_path(@project) %>
+| <%= link_to 'タスク内容を編集する', edit_project_task_path(@task) %>
