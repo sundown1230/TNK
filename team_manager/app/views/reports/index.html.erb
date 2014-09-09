@@ -1,0 +1,20 @@
+<h1><%= @project.title %></h1>
+<h3>レポート一覧</h3>
+<%= link_to 'レポートの追加', new_project_report_path(@project) %> 
+<table class="table table-default">
+  <tr>
+    <th>Title</th>
+	<th>Text</th>
+	<th>Author</th>
+  </tr>
+ 
+  <% @reports.each do |report| %>
+    <tr>
+      <td><%= report.title %></td>
+      <td><%= report.text %></td>
+      <td><%= report.user_id %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to 'プロジェクト一覧に戻る', projects_path %>
+ | <%= link_to 'プロジェクトページに戻る', project_path(@project) %>
