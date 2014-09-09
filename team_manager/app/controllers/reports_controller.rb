@@ -12,7 +12,7 @@ class ReportsController < ApplicationController
 
   def index
     @project = Project.find(params[:project_id])
-    @reports = @project.reports.find(:all)
+    @reports = @project.reports.all
   end
 
   def show
