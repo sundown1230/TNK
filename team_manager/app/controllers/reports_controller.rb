@@ -1,32 +1,32 @@
 class ReportsController < ApplicationController
-  def new
+  before_action :set_project
+
+  def set_project
     @project = Project.find(params[:project_id])
+  end
+
+  def new
     @report = @project.reports.build
   end
 
   def create
-    @project = Project.find(params[:project_id])
     @report = @project.reports.create(report_params)
     redirect_to project_path(@project)
   end
 
   def index
-    @project = Project.find(params[:project_id])
     @reports = @project.reports.all
   end
 
   def show
-    @project = Project.find(params[:project_id])
     @report = @project.reports.find(params[:id])
   end
 
   def edit
-    @project = Project.find(params[:project_id])
     @report = @project.reports.find(params[:id])
   end
 
   def update
-    @project = Project.find(params[:project_id])
     @report = @project.reports.find(params[:id])
     if @report.update(report_params)
       redirect_to @report
@@ -36,7 +36,6 @@ class ReportsController < ApplicationController
   end
  
   def destroy
-    @project = Project.find(params[:project_id])
     @report = @project.reports.find(params[:id])
     @report.destroy
     redirect_to project_path(@project)
