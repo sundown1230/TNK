@@ -8,9 +8,8 @@
   <%= @project.description %>
 </p>
 
-<%= render "reports/report" %>
-
-<%= render "reports/form" %>
+<%= render "tasks/tasks"%>
+<%= render "reports/reports" %>
 
 <%= link_to 'プロジェクト一覧に戻る', projects_path %>
 | <%= link_to 'プロジェクト内容を編集する', edit_project_path(@project) %>
