@@ -3,11 +3,13 @@
     <tr>
 	  <th>Title</th>
 	  <th>Description</th>
+	  <th>Due</th>
     </tr>
-    <% @project.reports.each do |report| %>
+    <% @project.tasks.each do |report| %>
     <tr>
-	  <td><%= report.title %></td>
-	  <td><%= report.text %></td>
+	  <td><%= task.title %></td>
+	  <td><%= task.text %></td>
+	  <td><%= task.due %></td>
     </tr>
     <% end %>
   </table>

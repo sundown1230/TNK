@@ -3,11 +3,13 @@
     <tr>
 	  <th>Title</th>
 	  <th>Description</th>
+	  <th>Author</th>
     </tr>
     <% @project.reports.each do |report| %>
     <tr>
 	  <td><%= report.title %></td>
 	  <td><%= report.text %></td>
+	  <td><%= report.user_id %></td>
     </tr>
     <% end %>
   </table>
