@@ -1,0 +1,13 @@
+<h2><%= @project.title %></h2>
+<p>
+  <strong>Title:</strong>
+  <%= @report.title %>
+</p>
+ 
+<p>
+  <strong>Text:</strong>
+  <%= @report.text %>
+</p>
+
+<%= link_to 'プロジェクトページに戻る', project_reports_path %>
+| <%= link_to 'レポート内容を編集する', edit_project_report_path(@report) %>

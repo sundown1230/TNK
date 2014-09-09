@@ -7,7 +7,7 @@
     </tr>
     <% @project.reports.each do |report| %>
     <tr>
-	  <td><%= report.title %></td>
+	  <td><%= link_to report.title, project_report_path(report) %></td>
 	  <td><%= report.text %></td>
 	  <td><%= report.user_id %></td>
     </tr>
