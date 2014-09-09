@@ -1,16 +1,16 @@
-<h5>新しいタスク</h5>
-<%= form_for([@project, @project.reports.build]) do |f| %>
+<h5>タスクを追加する</h5>
+<%= form_for([@project, @project.tasks.build]) do |f| %>
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </p>
   <p>
-    <%= f.label :content %><br>
-    <%= f.text_field :content %>
+    <%= f.label :due %><br>
+    <%= f.datetime_select :due %>
   </p>
   <p>
-    <%= f.label :due %><br>
-    <%= f.text_area :text %>
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
   </p>
   <p>
     <%= f.submit %>

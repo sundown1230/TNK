@@ -6,11 +6,11 @@
 	  <th>Description</th>
 	  <th>Due</th>
     </tr>
-    <% @project.tasks.each do |report| %>
+    <% @project.tasks.each do |task| %>
     <tr>
 	  <td><%= task.title %></td>
-	  <td><%= task.text %></td>
 	  <td><%= task.due %></td>
+	  <td><%= task.content %></td>
     </tr>
     <% end %>
   </table>
