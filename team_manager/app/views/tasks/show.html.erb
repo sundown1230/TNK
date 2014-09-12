@@ -11,7 +11,7 @@
 
 <p>
   <strong>Content:</strong>
-  <%= @task.due %>
+  <%= @task.content %>
 </p>
 <%= link_to 'プロジェクトページに戻る', project_path(@project) %>
-| <%= link_to 'タスク内容を編集する', edit_project_task_path(@task) %>
+| <%= link_to 'タスク内容を編集する', edit_project_task_path(@project, @task) %>

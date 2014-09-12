@@ -1,5 +1,5 @@
 class ReportsController < ApplicationController
-  before_action :set_project, only: [:new, :create, :show, :edit, :update, :destroy]
+  before_action :set_project, only: [:new, :create, :show, :edit, :update, :destroy, :index]
 
   def set_project
     @project = Project.find(params[:project_id])

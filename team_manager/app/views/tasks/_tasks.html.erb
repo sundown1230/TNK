@@ -6,9 +6,9 @@
 	  <th>Description</th>
 	  <th>Due</th>
     </tr>
-    <% @project.tasks.each do |task| %>
+    <% @tasks.each do |task| %>
     <tr>
-	  <td><%= task.title %></td>
+	  <td><%= link_to task.title, project_task_path(@project, task) %></td>
 	  <td><%= task.due %></td>
 	  <td><%= task.content %></td>
     </tr>

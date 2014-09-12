@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_project, only: [:new, :create, :destroy]
+  before_action :set_project, only: [:new, :create, :destroy, :index, :show]
 
   def set_project
     @project = Project.find(params[:project_id])
@@ -16,6 +16,10 @@ class TasksController < ApplicationController
 
   def index
 	@tasks = @project.tasks.all
+  end
+
+  def show
+    @task = @project.tasks.find(params[:id])
   end
 
   def destroy
