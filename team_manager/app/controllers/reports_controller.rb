@@ -11,7 +11,11 @@ class ReportsController < ApplicationController
 
   def create
     @report = @project.reports.create(report_params)
-    redirect_to project_path(@project)
+	if @report.save
+	  redirect_to @report
+	else
+	  render 'new'
+	end
   end
 
   def index

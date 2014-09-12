@@ -10,8 +10,12 @@ class TasksController < ApplicationController
   end
 
   def create
-    @tasks = @project.tasks.create(task_params)
-    redirect_to project_path(@project)
+    @task = @project.tasks.create(task_params)
+	if @task.save
+	  redirect_to @task
+	else
+	  render 'new'
+	end
   end
 
   def index
@@ -20,6 +24,15 @@ class TasksController < ApplicationController
 
   def show
     @task = @project.tasks.find(params[:id])
+  end
+  
+  def update
+    @task = @project.tasks.find(params[:id])
+	if @task.update(task_params)
+	  redirect_to @task
+	else
+	  render 'edit'
+	end
   end
 
   def destroy

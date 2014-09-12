@@ -1,5 +1,16 @@
 <h5>レポートを追加する</h5>
 <%= form_for([@project, @project.reports.build]) do |f| %>
+  <% if @report.errors.any? %>
+	<div id="error explanation">
+	  <p><%= pluralize(@report.errors.count, "error") %> 入力内容が適切ではあ>    りません。<p>
+	  <ul>
+	  <% @project.errors.full_messages.each do |msg| %>
+	    <li> <%= msg %></li>
+      <% end %>
+	  </ul>
+	</div>
+  <% end %>
+  
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
