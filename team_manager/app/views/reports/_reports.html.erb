@@ -5,9 +5,9 @@
 	  <th>Description</th>
 	  <th>Author</th>
     </tr>
-    <% @project.reports.each do |report| %>
+    <% @reports.each do |report| %>
     <tr>
-	  <td><%= link_to report.title, project_report_path(report) %></td>
+	  <td><%= link_to report.title, project_report_path(@project, report) %></td>
 	  <td><%= report.text %></td>
 	  <td><%= report.user_id %></td>
     </tr>
