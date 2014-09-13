@@ -9,9 +9,12 @@
   </tr> 
   <% @tasks.each do |task| %>
     <tr>
-	  <td><%= link_to task.title project_task_path() %> </td> 
+	  <td><%= link_to task.title, project_task_path(@project, task) %> </td> 
       <td><%= task.due %></td>
       <td><%= task.content %></td>
+	  <td><%= link_to '編集', edit_project_task_path(@project, task) %></td>
+      <td><%= link_to '削除', project_task_path(@project, task),
+              method: :delete, data: { confirm: '本当によろしいですか？' } %></td>
     </tr>
   <% end %>
 </table>

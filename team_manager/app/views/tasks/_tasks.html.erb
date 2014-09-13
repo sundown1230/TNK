@@ -1,5 +1,7 @@
-<h5>【タスク一覧】</h5>
-<%= link_to "タスクの追加", new_project_task_path(@project) %>
+<h5>【最新タスク】</h5>
+<%= link_to "タスクの追加", new_project_task_path(@project) %> | 
+<%= link_to "タスク一覧", project_tasks_path(@project) %>
+  <table class="table">
   <table class="table">
     <tr>
 	  <th>Title</th>

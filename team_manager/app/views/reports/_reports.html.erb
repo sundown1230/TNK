@@ -1,4 +1,6 @@
-<h5>【レポート一覧】</h5> <%= link_to "レポートの追加", new_project_report_path(@project) %>
+<h5>【最新レポート】</h5> 
+<%= link_to "レポートの追加", new_project_report_path(@project) %> | 
+<%= link_to "レポート一覧", project_reports_path(@project) %>
   <table class="table">
     <tr>
 	  <th>Title</th>
