@@ -35,7 +35,7 @@ class AccountingsController < ApplicationController
 
   private
     def accounting_params
-      params.require(:accounting).permit(:title, :name, :purpose, :date, :status)
+      params.require(:accounting).permit(:title, :name, :purpose, :application_date, :status)
     end
 end
 

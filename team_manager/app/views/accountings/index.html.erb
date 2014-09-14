@@ -11,7 +11,7 @@
     <tr>
       <td><%= link_to accounting.title ,accounting_path(accounting) %></td>
       <td><%= accounting.name %></td>
-      <td><%= accounting.date %></td>
+      <td><%= accounting.application_date %></td>
       <td><%= link_to '編集',edit_accounting_path(accounting) %></td>
       <td><%= link_to '削除',accounting_path(accounting),
               method: :delete, data:{ confirm: ''} %></td>
