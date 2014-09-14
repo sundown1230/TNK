@@ -29,7 +29,7 @@ class TasksController < ApplicationController
   def update
     @task = @project.tasks.find(params[:id])
 	if @task.update(task_params)
-	  redirect_to @task
+	  redirect_to project_task_path(@project, @task)
 	else
 	  render 'edit'
 	end

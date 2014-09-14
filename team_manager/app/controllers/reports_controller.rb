@@ -12,7 +12,7 @@ class ReportsController < ApplicationController
   def create
     @report = @project.reports.create(report_params)
 	if @report.save
-	  redirect_to @report
+	  redirect_to project_report_path(@project, @report)
 	else
 	  render 'new'
 	end
@@ -33,7 +33,7 @@ class ReportsController < ApplicationController
   def update
     @report = @project.reports.find(params[:id])
     if @report.update(report_params)
-      redirect_to @report
+	  redirect_to project_report_path(@project, @report)
     else
       render 'edit'
     end
