@@ -10,7 +10,7 @@
   </tr> 
   <% @reports.each do |report| %>
     <tr>
-	  <td><%= link_to report.title project_report_path(@project, report) %> </td> 
+	  <td><%= link_to report.title, project_report_path(@project, report) %> </td> 
       <td><%= report.text %></td>
       <td><%= report.user_id %></td>
 	  <td><%= link_to '編集', edit_project_report_path(@project, report) %></td>
