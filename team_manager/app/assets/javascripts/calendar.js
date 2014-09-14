@@ -1,3 +1,4 @@
+now = new Date();
 $(document).ready(function() {
   $('#calendar').fullCalendar({
   // ヘッダーのタイトルとボタン
@@ -56,11 +57,11 @@ $(document).ready(function() {
         // 最大時間
         maxTime: 20,
         // 表示する年
-        year: 2014,
+        year: now.getFullYear(),
         // 表示する月
-        month: 6,
+        month: now.getMonth(),
         // 表示する日
-        day: 31,
+        //day: 31,
         // 時間の書式
         timeFormat: 'H(:mm)',
         // 列の書式
@@ -105,22 +106,7 @@ $(document).ready(function() {
         // イベントソース
         eventSources: [
             {
-                events: [
-                      {
-                         title: 'event1',
-                          start: '2013-01-01'
-                      },
-                      {
-                          title: 'event2',
-                          start: '2013-01-02',
-                          end: '2013-01-03'
-                      },
-                      {
-                          title: 'event3',
-                          start: '2013-01-05 12:30:00',
-                          allDay: false // will make the time show
-                      }
-                  ]    
+                events: parse_tasks(gon.tasks) 
             }
         ]
     });
@@ -133,3 +119,16 @@ $(document).ready(function() {
     // カレンダーを破棄（イベントハンドラや内部データも破棄する）
     //$('#calendar').fullCalendar('destroy')
 });
+
+function parse_tasks(tasks){
+  var parsed_tasks = [];
+  for(var i=0;i<tasks.length;i++){
+    parsed_tasks.push({
+                        title: tasks[i].title,
+						start: tasks[i].due,
+                        end: tasks[i].due
+                        }
+					  );
+  }
+  return parsed_tasks
+}

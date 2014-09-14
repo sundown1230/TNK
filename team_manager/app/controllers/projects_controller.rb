@@ -18,6 +18,8 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+	@reports = @project.reports.all
+	@tasks = @project.tasks.all
   end
 
   def edit
