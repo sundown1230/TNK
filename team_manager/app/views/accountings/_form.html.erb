@@ -20,7 +20,7 @@
                 </p>
      <p>
      <%= f.label :date %><br>
-     <%= f.text_field :date %>
+     <%= f.datetime_select(:date, use_month_numbers: true)%>
      </p>
     <p>
         <%= f.label :purpose %><br>
