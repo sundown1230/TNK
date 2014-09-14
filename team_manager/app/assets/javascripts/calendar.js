@@ -106,7 +106,7 @@ $(document).ready(function() {
         // イベントソース
         eventSources: [
             {
-                events: [] 
+                events: parse_tasks(gon.tasks) 
             }
         ]
     });
@@ -120,14 +120,14 @@ $(document).ready(function() {
     //$('#calendar').fullCalendar('destroy')
 });
 
-function parse_events(events){
-  var parsed_events = [];
-  for(var i=0;i<events.length;i++){
-    parsed_events.push({
-                        title: events[i].title,
-                        end: events[i].due
+function parse_tasks(tasks){
+  var parsed_tasks = [];
+  for(var i=0;i<tasks.length;i++){
+    parsed_tasks.push({
+                        title: tasks[i].title,
+                        end: tasks[i].due
                         }
 					  );
   }
-  return parsed_events
+  return parsed_tasks
 }
