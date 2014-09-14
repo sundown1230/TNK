@@ -125,6 +125,7 @@ function parse_tasks(tasks){
   for(var i=0;i<tasks.length;i++){
     parsed_tasks.push({
                         title: tasks[i].title,
+						start: tasks[i].due,
                         end: tasks[i].due
                         }
 					  );

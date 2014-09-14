@@ -12,7 +12,7 @@ class TasksController < ApplicationController
   def create
     @task = @project.tasks.create(task_params)
 	if @task.save
-	  redirect_to @task
+	  redirect_to project_task_path(@project, @task)
 	else
 	  render 'new'
 	end
