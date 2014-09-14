@@ -14,10 +14,14 @@
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </p>
+
   <p>
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+  Author<br>
+  <%= f.fields_for :reports_users do |ru| %>
+    <%= ru.collection_select :user_id, User.all, :id, :name, selected: current_user.id %>
+  <% end %>
   </p>
+
   <p>
     <%= f.label :text %><br>
     <%= f.text_area :text %>

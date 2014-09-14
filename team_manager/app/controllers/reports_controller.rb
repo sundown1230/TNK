@@ -1,12 +1,13 @@
 class ReportsController < ApplicationController
   before_action :set_project, only: [:new, :create, :show, :edit, :update, :destroy, :index]
-
+  
   def set_project
     @project = Project.find(params[:project_id])
   end
 
   def new
     @report = @project.reports.build
+    @report.reports_users.build
   end
 
   def create
@@ -47,6 +48,6 @@ class ReportsController < ApplicationController
  
   private
     def report_params
-      params.require(:report).permit(:id, :title, :user_id, :text)
+      params.require(:report).permit(:id, :title, :user_id, :text, users_attributes: [:id, :name], reports_users_attributes: [:id, :report_id, :user_id])
     end
 end
