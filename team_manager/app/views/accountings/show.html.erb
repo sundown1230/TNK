@@ -16,7 +16,14 @@
 </p>
 <p>
   <strong>Status:</strong>
-    <%= @accounting.status %>
+    <% case @accounting.status %>
+    <% when 1 %>
+      申請中
+    <% when 2 %>
+      承認
+    <% when 3 %>
+       却下
+    <% end %>
     </p>
 
 
