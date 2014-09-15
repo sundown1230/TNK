@@ -26,7 +26,13 @@
         <%= f.label :purpose %><br>
          <%= f.text_area :purpose %>
      </p>
-                                       
+    <p>
+      <%= f.label :status %><br> 
+      <%= f.radio_button :status, "1" %> 申請中
+      <%= f.radio_button :status, "2" %> 承認
+      <%= f.radio_button :status, "3" %> 却下
+      
+    </p>
  <p>
  <%= f.submit %>
  </p>
