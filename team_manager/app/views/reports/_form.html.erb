@@ -3,7 +3,7 @@
 	<div id="error explanation">
 	  <p><%= pluralize(@report.errors.count, "error") %> 入力内容が適切ではあ>    りません。<p>
 	  <ul>
-	  <% @project.errors.full_messages.each do |msg| %>
+	  <% @report.errors.full_messages.each do |msg| %>
 	    <li> <%= msg %></li>
       <% end %>
 	  </ul>
