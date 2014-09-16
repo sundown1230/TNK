@@ -25,6 +25,7 @@ class ReportsController < ApplicationController
 
   def show
     @report = @project.reports.find(params[:id])
+	@authors = @report.reports_users.all
   end
 
   def edit
