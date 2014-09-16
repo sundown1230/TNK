@@ -3,7 +3,7 @@
 	<div id="error explanation">
 	  <p><%= pluralize(@report.errors.count, "error") %> 入力内容が適切ではあ>    りません。<p>
 	  <ul>
-	  <% @report.errors.full_messages.each do |msg| %>
+	  <% @project.errors.full_messages.each do |msg| %>
 	    <li> <%= msg %></li>
       <% end %>
 	  </ul>
@@ -14,14 +14,10 @@
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </p>
-
   <p>
-  Author<br>
-  <%= f.fields_for :reports_users, @report.reports_users do |ru| %>
-    <%= ru.collection_select :user_id, User.all, :id, :name, selected: current_user.id %>
-  <% end %>
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
   </p>
-
   <p>
     <%= f.label :text %><br>
     <%= f.text_area :text %>
