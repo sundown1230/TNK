@@ -18,6 +18,13 @@
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </p>
+
+  <p>
+  Member<br>
+    <%= f.fields_for :projects_users  do |pu| %>
+      <%= pu.collection_select :user_id, User.all, :id, :name %>
+	<% end %>
+  </p>
  
   <p>
     <%= f.submit %>
