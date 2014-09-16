@@ -17,7 +17,7 @@
 
   <p>
   Author<br>
-  <%= f.fields_for :reports_users do |ru| %>
+  <%= f.fields_for :reports_users, @report.reports_users do |ru| %>
     <%= ru.collection_select :user_id, User.all, :id, :name, selected: current_user.id %>
   <% end %>
   </p>
