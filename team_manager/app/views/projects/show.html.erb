@@ -8,6 +8,13 @@
   <%= @project.description %>
 </p>
 
+<p>
+プロジェクトメンバー
+  <% @members.each do |member| %>
+    <%= member.name %>,  
+  <% end %>
+</p>
+
 <%= render "tasks/tasks"%>
 <%= render "reports/reports" %>
 

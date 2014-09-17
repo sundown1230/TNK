@@ -22,7 +22,7 @@
 
   <p>
   関連ユーザー<br>
-  <%= f.fields_for :material_users  do |mu| %>
+  <%= f.fields_for :material_users, @material.material_users  do |mu| %>
     <%= mu.collection_select :user_id, User.all, :id, :name %>
   <% end %>
   </p>
