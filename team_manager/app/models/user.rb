@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   has_many :material_users
   has_many :materials, through: :material_users
+
+  has_many :tasks_users
+  has_many :tasks, through: :tasks_users
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
