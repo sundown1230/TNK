@@ -15,6 +15,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-	  params.require(:user).permit(:id, :name, :email, material_users_attributes: [:id, :material_id, :user_id], materials_attributes: [:id])
+	  params.require(:user).permit(:id, :name, :email, material_users_attributes: [:id, :material_id, :user_id], materials_attributes: [:id], tasks_attributes: [:id, :title, :due, :content], tasks_users_attributes: [:id, :task_id, :user_id])
   end
 end
