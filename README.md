@@ -53,7 +53,7 @@ pull requestはmasterブランチに対してではなく、developmentブラン
 ### 他の人の作業を手元で確認する場合
 githubではコードを読むことができるが、実際に手元（ローカル）に持ってきて動作確認をしたほうが良い。コードと動作の両方でチェックしよう。他人の作ったブランチをリモートからローカルにチェックアウトする方法を以下の通り。
 ```
-git co -b checkout branch_name origin/branch_name
+git checkout -b branch_name origin/branch_name
 ```
 
 
