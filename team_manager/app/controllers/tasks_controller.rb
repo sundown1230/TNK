@@ -25,6 +25,7 @@ class TasksController < ApplicationController
 
   def show
     @task = @project.tasks.find(params[:id])
+	@assignees = @task.users.all
   end
   
   def update
