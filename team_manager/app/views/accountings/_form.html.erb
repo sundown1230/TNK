@@ -27,11 +27,12 @@
          <%= f.text_area :purpose %>
      </p>
     <p>
-      <%= f.label :status %><br> 
-      <%= f.radio_button :status, "1" %> 申請中
-      <%= f.radio_button :status, "2" %> 承認
-      <%= f.radio_button :status, "3" %> 却下
-      
+      <% if params[:action]=="edit" then %>
+        <%= f.label :status %><br> 
+       <%= f.radio_button :status, "1" %> 申請中
+       <%= f.radio_button :status, "2" %> 承認
+       <%= f.radio_button :status, "3" %> 却下
+      <% end %>
     </p>
  <p>
  <%= f.submit %>
