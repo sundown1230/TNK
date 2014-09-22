@@ -7,6 +7,7 @@ class ReportsController < ApplicationController
 
   def new
     @report = @project.reports.build
+	@report.reports_users.build
   end
 
   def create
@@ -24,6 +25,7 @@ class ReportsController < ApplicationController
 
   def show
     @report = @project.reports.find(params[:id])
+    @authors = @report.users.all
   end
 
   def edit
@@ -47,6 +49,6 @@ class ReportsController < ApplicationController
  
   private
     def report_params
-      params.require(:report).permit(:id, :title, :user_id, :text)
+      params.require(:report).permit(:id, :title, :user_id, :text, users_attributes: [:id, :name], reports_users_attributes: [:id, :user_id, :report_id])
     end
 end

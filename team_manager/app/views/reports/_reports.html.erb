@@ -11,7 +11,11 @@
     <tr>
 	  <td><%= link_to report.title, project_report_path(@project, report) %></td>
 	  <td><%= report.text %></td>
-	  <td><%= report.user_id %></td>
+	  <td>
+	  <% report.users.all.each do |u| %>
+	    <%= u.name %>
+      <% end %>
+	  </td>
     </tr>
     <% end %>
   </table>

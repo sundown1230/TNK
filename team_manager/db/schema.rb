@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140917183622) do
+ActiveRecord::Schema.define(version: 20140922213601) do
 
   create_table "accountings", force: true do |t|
     t.string   "title"
@@ -66,10 +66,8 @@ ActiveRecord::Schema.define(version: 20140917183622) do
   add_index "reports", ["project_id"], name: "index_reports_on_project_id", using: :btree
 
   create_table "reports_users", force: true do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "report_id",  null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "user_id",   null: false
+    t.integer "report_id", null: false
   end
 
   create_table "tasks", force: true do |t|
