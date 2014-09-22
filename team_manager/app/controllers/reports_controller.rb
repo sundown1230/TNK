@@ -7,6 +7,7 @@ class ReportsController < ApplicationController
 
   def new
     @report = @project.reports.build
+	@report.reports_users.build
   end
 
   def create
@@ -24,6 +25,7 @@ class ReportsController < ApplicationController
 
   def show
     @report = @project.reports.find(params[:id])
+    @authors = @report.users.all
   end
 
   def edit
