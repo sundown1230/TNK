@@ -15,8 +15,10 @@
     <%= f.text_field :title %>
   </p>
   <p>
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+  記録者
+    <%= f.fields_for :reports_users, @report.reports_users do |ru| %><br>
+      <%= ru.collection_select :user_id, @project.users.all, :id, :name %>
+    <% end %>
   </p>
   <p>
     <%= f.label :text %><br>

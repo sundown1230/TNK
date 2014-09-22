@@ -3,7 +3,14 @@
   <strong>Title:</strong>
   <%= @report.title %>
 </p>
- 
+
+<p>
+  <strong>Author:</strong>
+ <% @authors.each do |author| %>
+   <%= author.name %>,
+ <% end %>
+</p>
+
 <p>
   <strong>Text:</strong>
   <%= @report.text %>
