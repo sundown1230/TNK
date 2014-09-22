@@ -48,6 +48,13 @@ ActiveRecord::Schema.define(version: 20140909210927) do
     t.datetime "updated_at",         null: false
   end
 
+  create_table "projects_users", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "project_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "reports", force: true do |t|
     t.integer  "user_id",    null: false
     t.text     "text",       null: false
