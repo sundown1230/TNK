@@ -9,14 +9,23 @@
       </ul>
     </div>
   <% end %>
+  
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </p>
+  
   <p>
     <%= f.label :due %><br>
     <%= f.datetime_select :due %>
   </p>
+  
+  <p>
+    <%= f.fields_for :tasks_users, @task.tasks_users do |tu| %><br>
+      <%= tu.collection_select :user_id, User.all, :id, :name %>
+	<% end %>
+  </p>
+  
   <p>
     <%= f.label :content %><br>
     <%= f.text_area :content %>

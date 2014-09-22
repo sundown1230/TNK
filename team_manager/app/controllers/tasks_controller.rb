@@ -7,6 +7,7 @@ class TasksController < ApplicationController
   
   def new
 	@task = @project.tasks.build
+	@task.tasks_users.build
   end
 
   def create
@@ -24,6 +25,7 @@ class TasksController < ApplicationController
 
   def show
     @task = @project.tasks.find(params[:id])
+	@assignees = @task.users.all
   end
   
   def update
@@ -47,6 +49,6 @@ class TasksController < ApplicationController
  
   private
     def task_params
-      params.require(:task).permit(:id, :title, :project_id, :content, :due)
+      params.require(:task).permit(:id, :title, :project_id, :content, :due, users_attributes: [:id, :name], tasks_users_attributes: [:id, :task_id, :user_id])
     end
 end
