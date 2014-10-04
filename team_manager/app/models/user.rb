@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :material_users
-  has_many :materials, through: :material_users
+  has_many :materials_users
+  has_many :materials, through: :materials_users
 
   has_many :tasks_users
   has_many :tasks, through: :tasks_users
