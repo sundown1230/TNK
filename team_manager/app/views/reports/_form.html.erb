@@ -1,4 +1,4 @@
-<%= form_for([@project, @project.reports.build]) do |f| %>
+<%= form_for([@project, @report]) do |f| %>
   <% if @report.errors.any? %>
 	<div id="error explanation">
 	  <p><%= pluralize(@report.errors.count, "error") %> 入力内容が適切ではあ>    りません。<p>
