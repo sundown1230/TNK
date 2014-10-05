@@ -5,15 +5,71 @@
 <br>
 <table class="table">
   <tr>
-    <td style="width:200px;">代</td>
+    <td style="width:100px;">代</td>
 	<td><%= @user.generation%></td>
   </tr>
   <tr>
-    <td style="width:200px;">一言コメント</td>
+    <td style="width:100px;">一言コメント</td>
 	<td><%= @user.description%></td>
   </tr>
   <tr>
-    <td style="width:200px;">連絡先</td>
+    <td style="width:100px;">連絡先</td>
     <td><%= @user.email %></td>
   </tr>
+</table>
+
+<h4>【資料】</h4>
+<table class="table">
+  <tr>
+    <td style="width:50px;">ファイル名</td>
+    <td style="width:100px;">概要</td>
+  </tr>
+  <% @materials.each do |m|%>
+  <tr>
+      <td style="width:50px;"><%= m.title %></td>
+      <td style="width:100px;"><%= m.description %></td>
+  </tr>
+  <% end %>
+</table>
+
+<h4>【プロジェクト】</h4>
+<table class="table">
+  <tr>
+    <td style="width:50px;">プロジェクト名</td>
+    <td style="width:100px;">概要</td>
+  </tr>
+  <% @projects.each do |p|%>
+  <tr>
+      <td style="width:50px;"><%= p.title %></td>
+      <td style="width:100px;"><%= p.description %></td>
+  </tr>
+  <% end %>
+</table>
+
+<h4>【レポート】</h4>
+<table class="table">
+  <tr>
+    <td style="width:50px;">タイトル</td>
+    <td style="width:100px;">内容</td>
+  </tr>
+  <% @reports.each do |r|%>
+  <tr>
+      <td style="width:50px;"><%= r.title %></td>
+      <td style="width:100px;"><%= r.text %></td>
+  </tr>
+  <% end %>
+</table>
+
+<h4>【タスク】</h4>
+<table class="table">
+  <tr>
+    <td style="width:50px;">タイトル</td>
+    <td style="width:100px;">締め切り</td>
+  </tr>
+  <% @tasks.each do |t|%>
+  <tr>
+      <td style="width:50px;"><%= t.title %></td>
+      <td style="width:100px;"><%= t.due.to_s(:db)%></td>
+  </tr>
+  <% end %>
 </table>

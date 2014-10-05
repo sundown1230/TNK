@@ -11,13 +11,17 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+	@materials = @user.materials.take(3)
+	@projects = @user.projects.take(3)
+	@reports = @user.reports.take(3)
+	@tasks = @user.tasks.take(3)
   end
 
   private
     def user_params
 	  params.require(:user).permit(:id, :name, :email, 
 	    materials_users_attributes: [:id, :material_id, :user_id],
-	    materials_attributes: [:id],
+	    materials_attributes: [:id, :title, :description],
 	    reports_attributes: [:id, :title],
 	    reports_users_attributes: [:id, :report_id, :user_id], 
 	    projects_attributes: [:id, :title, :description],
