@@ -11,10 +11,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-	@materials = @user.materials.take(3)
-	@projects = @user.projects.take(3)
-	@reports = @user.reports.take(3)
-	@tasks = @user.tasks.take(3)
+	@materials = @user.materials.limit(3)
+	@projects = @user.projects.limit(3)
+	@reports = @user.reports.limit(3)
+	@tasks = @user.tasks.limit(3)
   end
 
   private
