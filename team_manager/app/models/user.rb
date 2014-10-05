@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
   has_many :reports_users
   has_many :reports, through: :reports_users
 
-  has_many :projects_users
-  has_many :users, through: :projects_users
+  has_many :projects_users, dependent: :destroy
+  has_many :projects, through: :projects_users
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
