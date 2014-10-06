@@ -5,29 +5,33 @@
 <br>
 <table class="table">
   <tr>
-    <td style="width:200px;">代</td>
+    <td>代</td>
 	<td><%= @user.generation%></td>
   </tr>
   <tr>
-    <td style="width:100px;">一言コメント</td>
+    <td>一言コメント</td>
 	<td><%= @user.description%></td>
   </tr>
   <tr>
-    <td style="width:100px;">連絡先</td>
+    <td>連絡先</td>
     <td><%= @user.email %></td>
   </tr>
 </table>
 
+<% if current_user == @user %>
+  <%=  link_to "プロフィールを編集する", edit_user_registration_path %>
+<% end %>
+
 <h4>【資料】</h4>
 <table class="table">
   <tr>
-    <td style="width:50px;">ファイル名</td>
-    <td style="width:100px;">概要</td>
+    <td>ファイル名</td>
+    <td>概要</td>
   </tr>
   <% @materials.each do |m|%>
   <tr>
-      <td style="width:50px;"><%= m.title %></td>
-      <td style="width:100px;"><%= m.description %></td>
+      <td><%= m.title %></td>
+      <td><%= m.description %></td>
   </tr>
   <% end %>
 </table>
@@ -35,13 +39,13 @@
 <h4>【プロジェクト】</h4>
 <table class="table">
   <tr>
-    <td style="width:50px;">プロジェクト名</td>
-    <td style="width:100px;">概要</td>
+    <td>プロジェクト名</td>
+    <td>概要</td>
   </tr>
   <% @projects.each do |p|%>
   <tr>
-      <td style="width:50px;"><%= p.title %></td>
-      <td style="width:100px;"><%= p.description %></td>
+      <td><%= p.title %></td>
+      <td><%= p.description %></td>
   </tr>
   <% end %>
 </table>
@@ -49,13 +53,13 @@
 <h4>【レポート】</h4>
 <table class="table">
   <tr>
-    <td style="width:50px;">タイトル</td>
-    <td style="width:100px;">内容</td>
+    <td>タイトル</td>
+    <td>内容</td>
   </tr>
   <% @reports.each do |r|%>
   <tr>
-      <td style="width:50px;"><%= r.title %></td>
-      <td style="width:100px;"><%= r.text %></td>
+      <td><%= r.title %></td>
+      <td><%= r.text %></td>
   </tr>
   <% end %>
 </table>
@@ -63,13 +67,13 @@
 <h4>【タスク】</h4>
 <table class="table">
   <tr>
-    <td style="width:50px;">タイトル</td>
-    <td style="width:100px;">締め切り</td>
+    <td>タイトル</td>
+    <td>締め切り</td>
   </tr>
   <% @tasks.each do |t|%>
   <tr>
-      <td style="width:50px;"><%= t.title %></td>
-      <td style="width:100px;"><%= t.due.to_s(:db)%></td>
+      <td><%= t.title %></td>
+      <td><%= t.due.to_s(:db)%></td>
   </tr>
   <% end %>
 </table>
