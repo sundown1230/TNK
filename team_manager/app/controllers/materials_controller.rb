@@ -43,6 +43,7 @@ class MaterialsController < ApplicationController
 
   def destroy
     @material = Material.find(params[:id])
+	File.delete("public/"+@material.filetype+"/"+@material.filename)
 	@material.destroy
 	redirect_to materials_path
   end
