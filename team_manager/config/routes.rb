@@ -15,7 +15,16 @@ TeamManager::Application.routes.draw do
   end
   resources :users
 
-  resources :materials
+  resources :materials do
+    member do
+	  get "download"
+	end
+
+    collection do
+	  post "upload"
+	end
+  end
+
   resources :accountings
 
   # The priority is based upon order of creation: first created -> highest priority.
