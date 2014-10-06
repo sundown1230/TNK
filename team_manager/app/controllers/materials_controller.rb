@@ -7,16 +7,16 @@ class MaterialsController < ApplicationController
   def create
     @material = Material.new(material_params)
     file = params["material"]["content"]
-	@material.filename = file.original_filename
-	@material.filetype = File.extname(file.original_filename).slice(1..-1)
+    @material.filename = file.original_filename
+    @material.filetype = File.extname(file.original_filename).slice(1..-1)
     File.open("public/"+@material.filetype+"/"+@material.filename, 'wb') { |f| 
 	  f.write(file.read)
-	}
+    }
     if @material.save
       redirect_to @material
-	else
-	  render 'new'
-	end
+    else
+      render 'new'
+    end
   end
 
   def index
@@ -43,13 +43,13 @@ class MaterialsController < ApplicationController
 
   def destroy
     @material = Material.find(params[:id])
-	File.delete("public/"+@material.filetype+"/"+@material.filename)
-	@material.destroy
-	redirect_to materials_path
+    File.delete("public/"+@material.filetype+"/"+@material.filename)
+    @material.destroy
+    redirect_to materials_path
   end
 
   private
     def material_params
 	  params.require(:material).permit(:id, :title, :filename, :filetype, users_attributes: [:id, :name], materials_users_attributes: [:id, :user_id, :material_id])
-	end
+    end
 end
