@@ -3,15 +3,15 @@
 <%= link_to "新規ドキュメントの作成", new_material_path %>
 <table class="table">
   <tr>
-    <th>Title</th>
-    <th>Description</th>
+    <th>タイトル</th>
+    <th>ファイル名</th>
     <th colspan="1"></th>
   </tr>
  
   <% @materials.each do |material| %>
     <tr>
       <td><%= link_to material.title, material_path(material) %></td>
-      <td><%= material.text %></td>
+      <td><%= material.filename %></td>
       <td><%= link_to '編集', edit_material_path(material) %></td>
 	</tr>
   <% end %>
