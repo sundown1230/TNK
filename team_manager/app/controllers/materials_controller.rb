@@ -47,16 +47,6 @@ class MaterialsController < ApplicationController
 	redirect_to materials_path
   end
 
-  def upload
-     file = params["material"]["content"]
-	 #filename = file.original_filename
-	 filetype = file.content_type
-     File.open("public/"+"/#{name}/", 'wb') { |f| 
-	   f.write(file.read)
-	 }
-	 render nothing: true, status: 200
-  end
-
   private
     def material_params
 	  params.require(:material).permit(:id, :title, :filename, :filetype, users_attributes: [:id, :name], materials_users_attributes: [:id, :user_id, :material_id])
