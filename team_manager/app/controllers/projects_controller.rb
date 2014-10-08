@@ -22,6 +22,7 @@ class ProjectsController < ApplicationController
 	@reports = @project.reports.all
 	@tasks = @project.tasks.all
 	@members = @project.users.all
+	@project_manager = User.find(@project.project_manager_id)
   end
 
   def edit
