@@ -1,13 +1,17 @@
 class ImageController < ApplicationController
+  
+  #before_action :set_image, only: [:show, :edit, :update, :destroy ]
   def new
-  @image = Image.new
+    @imageable = find_imageable
+    @image = Image.new
   end
+
   def create
     @imageable = find_imageable
-    @image = @imageable.images.build(params[:image])
+    @image = @imageable.images.new(params[:image])
        
     if @image.save
-        redirect_to accounting_image_path(@imageable, @image), notece: 'suc'
+        redirect_to @image.imageable, notece: 'suc'
     else
         redirect_to @image.imageable, notice: 'An error occured.'
     end
@@ -16,13 +20,11 @@ class ImageController < ApplicationController
     @images = Image.all
   end
   def show
-    @image = Image.find(params[:id])
   end
   def edit
-    @image = Image.find(params[:id])
   end
   def update
-    @image = Image.find(params[:id])
+    @image = @imageabld.images.find(params[:id])
     if @image.update(image_params)
       redirect_to @image.imageable
     else
@@ -30,7 +32,7 @@ class ImageController < ApplicationController
     end
   end
   def destroy
-    @image =Image.find(params[:id])
+    @image = @imageable.images.find(params[:id])
     @image.destroy
     redirect_to @image.imageable_path
   end
@@ -39,7 +41,7 @@ class ImageController < ApplicationController
     def image_params
       params.require(:image).permit(:image_file, :imageable)
     end
-  private
+ 
     def find_imageable
       params.each do |name, value|
         if name =~ /(.+)_id$/
@@ -47,6 +49,9 @@ class ImageController < ApplicationController
         end
       end
       nil
+    end
+    def set_image
+      @image = Image.find(params[:id])
     end
 end
 

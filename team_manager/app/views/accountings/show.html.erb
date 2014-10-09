@@ -24,14 +24,13 @@
     <% when 3 %>
        却下
     <% end %>
-    </p>
-<%= debug @accounting %>
-<%= @accounting.images.each do |image| %>
-test
-<%= image_tag image.image_file.url(:medium) %>
-<% end %>
-<%= image_tag @accounting.images.first.image_file.url(:medium) if @accounting.images.present? %>
-
+</p>
+<p>
+  <strong>Images:</strong><br>
+  <%= @accounting.images.all.each do |im| %>
+  <%= image_tag im.image_file.url(:medium) %><br>
+  <% end %>
+</p>
 <%= link_to '経理申請 一覧に戻る', accountings_path %>
 <%= link_to '経理申請内容を編集する', edit_accounting_path(@accounting) %>
 
