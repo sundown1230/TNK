@@ -18,10 +18,7 @@ TeamManager::Application.routes.draw do
   resources :materials
   
   resources :accountings do
-  resources :images
-  end
-  resources :images do
-  resources :images
+   resources :images
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

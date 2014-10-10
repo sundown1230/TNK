@@ -5,7 +5,7 @@ class AccountingsController < ApplicationController
   end
   def create
     @accounting = Accounting.new(accounting_params)
-    @accounting.images=Accounting.find
+
     if @accounting.save
       redirect_to @accounting
     else

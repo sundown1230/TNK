@@ -11,9 +11,9 @@ class ImageController < ApplicationController
     @image = @imageable.images.new(params[:image])
        
     if @image.save
-        redirect_to @image.imageable, notece: 'suc'
+        redirect_to @image.imageable
     else
-        redirect_to @image.imageable, notice: 'An error occured.'
+        redirect_to @image.imageable
     end
   end
   def index
@@ -24,7 +24,7 @@ class ImageController < ApplicationController
   def edit
   end
   def update
-    @image = @imageabld.images.find(params[:id])
+    @image = @imageable.images.find(params[:id])
     if @image.update(image_params)
       redirect_to @image.imageable
     else
