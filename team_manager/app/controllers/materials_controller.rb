@@ -1,7 +1,7 @@
 class MaterialsController < ApplicationController
   def new
     @material = Material.new
-	4.times { @material.materials_users.build }
+    2.times { @material.materials_users.build }
   end
 
   def create
@@ -25,7 +25,7 @@ class MaterialsController < ApplicationController
 
   def show
     @material = Material.find(params[:id])
-	@materials_users = @material.users.all
+    @materials_users = @material.users.all
   end
 
   def edit
@@ -50,6 +50,6 @@ class MaterialsController < ApplicationController
 
   private
     def material_params
-	  params.require(:material).permit(:id, :title, :filename, :filetype, users_attributes: [:id, :name], materials_users_attributes: [:id, :user_id, :material_id])
+      params.require(:material).permit(:id, :title, :filename, :filetype, users_attributes: [:id, :name], materials_users_attributes: [:id, :user_id, :material_id])
     end
 end
