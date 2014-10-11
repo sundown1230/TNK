@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   def new
     @project = Project.new
-    4.times { @project.projects_users.build }
+    2.times { @project.projects_users.build }
   end
 
   def create
@@ -22,6 +22,7 @@ class ProjectsController < ApplicationController
 	@reports = @project.reports.all
 	@tasks = @project.tasks.all
 	@members = @project.users.all
+	@project_manager = User.find(@project.project_manager_id)
   end
 
   def edit
@@ -43,8 +44,25 @@ class ProjectsController < ApplicationController
 	redirect_to projects_path
   end
 
+  def members_edit
+    @project = Project.find(params[:id])
+	@new_member = @project.projects_users.build
+    #if @project.update(project_params)
+    #   redirect_to @project
+    #else
+    #   render 'members_edit'
+    #end
+  end
+
+  def member_delete
+    @project = Project.find(params[:id])
+    @project_member = @project.projects_users.where(user_id: params[:user_id], project_id: @project.id).first
+    @project_member.destroy
+    redirect_to project_members_edit_path(@project)
+  end
+
   private
     def project_params
 	  params.require(:project).permit(:title, :project_manager_id, :starts_at, :ends_at, :description, :status, users_attributes: [:id, :name], projects_users_attributes: [:id, :project_id, :user_id])
-	end
+    end
 end
