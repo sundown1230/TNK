@@ -36,11 +36,12 @@
       <% end %>
     </p>
     -->
-    
+    <p>
    <%= f.fields_for :images do |imf| %>
        <%= imf.file_field :image_file %>       
     <% end %>
- <p>
+    </p><br>
+  <p>
  <%= f.submit %>
  </p>
  <% end %>
