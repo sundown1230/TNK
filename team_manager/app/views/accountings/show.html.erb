@@ -27,7 +27,7 @@
 </p>
 <p>
   <strong>Images:</strong><br>
-  <%= @accounting.images.all.each do |im| %>
+  <% @accounting.images.each do |im| %>
   <%= image_tag im.image_file.url(:medium) %><br>
   <% end %>
 </p>

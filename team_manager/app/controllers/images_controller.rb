@@ -1,4 +1,4 @@
-class ImageController < ApplicationController
+class ImagesController < ApplicationController
   
   #before_action :set_image, only: [:show, :edit, :update, :destroy ]
   def new
@@ -8,7 +8,7 @@ class ImageController < ApplicationController
 
   def create
     @imageable = find_imageable
-    @image = @imageable.images.new(params[:image])
+   @image = @imageable.images.new(params[:image])
        
     if @image.save
         redirect_to @image.imageable
@@ -19,10 +19,7 @@ class ImageController < ApplicationController
   def index
     @images = Image.all
   end
-  def show
-  end
-  def edit
-  end
+
   def update
     @image = @imageable.images.find(params[:id])
     if @image.update(image_params)
