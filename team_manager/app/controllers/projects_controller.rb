@@ -8,9 +8,9 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)	
     if @project.save
       redirect_to @project
-	else
-	  render 'new'
-	end
+    else
+      render 'new'
+    end
   end
 
   def index
@@ -19,10 +19,10 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-	@reports = @project.reports.all
-	@tasks = @project.tasks.all
-	@members = @project.users.all
-	@project_manager = User.find(@project.project_manager_id)
+    @reports = @project.reports.all
+    @tasks = @project.tasks.all
+    @members = @project.users.all
+    @project_manager = User.find(@project.project_manager_id)
   end
 
   def edit
@@ -40,13 +40,13 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project = Project.find(params[:id])
-	@project.destroy
-	redirect_to projects_path
+    @project.destroy
+    redirect_to projects_path
   end
 
   def members_edit
     @project = Project.find(params[:id])
-	@new_member = @project.projects_users.build
+    @new_member = @project.projects_users.build
     #if @project.update(project_params)
     #   redirect_to @project
     #else
