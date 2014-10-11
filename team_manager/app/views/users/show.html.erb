@@ -30,7 +30,7 @@
   </tr>
   <% @materials.each do |m|%>
   <tr>
-      <td><%= m.title %></td>
+      <td><%= link_to m.title, material_path(m) %></td>
       <td><%= m.text %></td>
   </tr>
   <% end %>
@@ -44,7 +44,7 @@
   </tr>
   <% @projects.each do |p|%>
   <tr>
-      <td><%= p.title %></td>
+      <td><%= link_to p.title, project_path(p) %></td>
       <td><%= p.description %></td>
   </tr>
   <% end %>
@@ -54,11 +54,13 @@
 <table class="table">
   <tr>
     <td>タイトル</td>
+    <td>プロジェクト名</td>
     <td>内容</td>
   </tr>
   <% @reports.each do |r|%>
   <tr>
-      <td><%= r.title %></td>
+      <td><%= link_to r.title, project_report_path(r.project_id, r) %></td>
+      <td><%= r.project.title %></td>
       <td><%= r.text %></td>
   </tr>
   <% end %>
@@ -68,11 +70,13 @@
 <table class="table">
   <tr>
     <td>タイトル</td>
+    <td>プロジェクト名</td>
     <td>締め切り</td>
   </tr>
   <% @tasks.each do |t|%>
   <tr>
-      <td><%= t.title %></td>
+      <td><%= link_to t.title, project_task_path(t.project_id, t) %></td>
+      <td><%= t.project.title %></td>
       <td><%= t.due.to_s(:db)%></td>
   </tr>
   <% end %>
