@@ -1,7 +1,7 @@
 class MaterialsController < ApplicationController
   def new
     @material = Material.new
-    2.times { @material.materials_users.build }
+    @material.materials_users.build
   end
 
   def create
