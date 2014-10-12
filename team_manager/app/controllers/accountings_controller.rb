@@ -19,6 +19,9 @@ class AccountingsController < ApplicationController
   def edit
     @accounting = Accounting.find(params[:id])
   end
+  def edit_status
+    @accounting = Accounting.find(params[:id])
+  end
   def update
     @accounting = Accounting.find(params[:id])
     if @accounting.update(accounting_params)
