@@ -37,7 +37,7 @@
     </p>
     -->
     <p>
-   <%= f.fields_for :images do |imf| %>
+   <%= f.fields_for :images, @accounting.images do |imf| %>
        <%= imf.file_field :image_file %>       
     <% end %>
     </p><br>
