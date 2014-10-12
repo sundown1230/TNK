@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   def new
     @project = Project.new
+    4.times { @project.projects_users.build }
   end
 
   def create
@@ -18,6 +19,9 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+	@reports = @project.reports.all
+	@tasks = @project.tasks.all
+	@members = @project.users.all
   end
 
   def edit
@@ -41,6 +45,6 @@ class ProjectsController < ApplicationController
 
   private
     def project_params
-	  params.require(:project).permit(:title, :project_manager_id, :starts_at, :ends_at, :description, :status)
+	  params.require(:project).permit(:title, :project_manager_id, :starts_at, :ends_at, :description, :status, users_attributes: [:id, :name], projects_users_attributes: [:id, :project_id, :user_id])
 	end
 end

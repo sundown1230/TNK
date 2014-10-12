@@ -1,0 +1,22 @@
+<h1><%= @project.title %></h1>
+<h3>タスク一覧</h3>
+<%= link_to 'タスクの追加', new_project_task_path(@project) %> 
+<table class="table table-default">
+  <tr>
+    <th>Title</th>
+	<th>Due</th>
+	<th>Content</th>
+  </tr> 
+  <% @tasks.each do |task| %>
+    <tr>
+	  <td><%= link_to task.title, project_task_path(@project, task) %> </td> 
+      <td><%= task.due.to_s(:db) %></td>
+      <td><%= task.content %></td>
+	  <td><%= link_to '編集', edit_project_task_path(@project, task) %></td>
+      <td><%= link_to '削除', project_task_path(@project, task),
+              method: :delete, data: { confirm: '本当によろしいですか？' } %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to 'プロジェクト一覧に戻る', projects_path %>
+ | <%= link_to 'プロジェクトページに戻る', project_path(@project) %>

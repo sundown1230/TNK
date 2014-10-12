@@ -1,0 +1,18 @@
+<h5>【最新タスク】</h5>
+<%= link_to "タスクの追加", new_project_task_path(@project) %> | 
+<%= link_to "タスク一覧", project_tasks_path(@project) %>
+  <table class="table">
+  <table class="table">
+    <tr>
+	  <th>Title</th>
+	  <th>Description</th>
+	  <th>Due</th>
+    </tr>
+    <% @tasks.each do |task| %>
+    <tr>
+	  <td><%= link_to task.title, project_task_path(@project, task) %></td>
+	  <td><%= task.due.to_s(:db) %></td>
+	  <td><%= task.content %></td>
+    </tr>
+    <% end %>
+  </table>

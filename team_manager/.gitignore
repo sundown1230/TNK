@@ -20,3 +20,4 @@
 
 # Ignore database configuration data
 /config/database.yml
+

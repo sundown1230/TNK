@@ -4,17 +4,15 @@
 <table class="table">
   <tr>
     <th>Title</th>
-    <th>Text</th>
-    <th colspan="2"></th>
+    <th>Description</th>
+    <th colspan="1"></th>
   </tr>
  
   <% @materials.each do |material| %>
     <tr>
-      <td><%= material.title %></td>
+      <td><%= link_to material.title, material_path(material) %></td>
       <td><%= material.text %></td>
-      <td><%= link_to '詳細', material_path(material) %></td>
       <td><%= link_to '編集', edit_material_path(material) %></td>
-      <td><%= link_to '削除', material_path(material), method: :delete, data: { confirm: '本当によろしいですか？' } %></td>
-    </tr>
+	</tr>
   <% end %>
 </table>
