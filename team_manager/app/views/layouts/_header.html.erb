@@ -17,6 +17,7 @@
 
 		<li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">プロジェクト<b class="caret"></b></a>
+		  <span class="dropdown-arrow"></span>
           <ul class="dropdown-menu">
             <li><%= link_to 'プロジェクト一覧', projects_path %></li>
             <li><a href="#">過去のプロジェクト</a></li>
@@ -25,7 +26,8 @@
 		
 		<li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">資料<b class="caret"></b></a>
-          <ul class="dropdown-menu">
+          <span class="dropdown-arrow"></span>
+		  <ul class="dropdown-menu">
             <li><%= link_to '資料一覧', materials_path %></li>
             <li><a href="#">議事録</a></li>
             <li class="divider"></li>
@@ -34,7 +36,8 @@
         </li>
    <li class="dropdown">
       <a href='#' class="dropdown-toggle" data-toggle="dropdown">各種申請<b class="caret"></b></a>
-      <ul class="dropdown-menu">
+      <span class="dropdown-arrow"></span>
+	  <ul class="dropdown-menu">
         <li><%= link_to '経理申請一覧',accountings_path %></li>
       </ul>
    </li>
@@ -45,7 +48,8 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>マイメニュー<b class="caret"></b></a>
-          <ul class="dropdown-menu">
+          <span class="dropdown-arrow"></span>
+		  <ul class="dropdown-menu">
 	        <% if user_signed_in? %>
 	          <li><a href="#"><%= current_user.email %></a></li>
 	          <li><%= link_to 'Edit profile', edit_user_registration_path, class: 'navbar-link' %></li> 
