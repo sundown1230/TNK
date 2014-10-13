@@ -20,9 +20,15 @@ TeamManager::Application.routes.draw do
   resources :users
 
   resources :materials
+  
+  resources :accountings do
+    resources :images
+  end
+
   resources :accountings
 
   get 'accountings/:id/edit_status' => 'accountings#edit_status', as: :edit_status
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

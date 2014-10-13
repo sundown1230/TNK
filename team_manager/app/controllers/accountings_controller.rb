@@ -1,9 +1,11 @@
 class AccountingsController < ApplicationController
   def new
     @accounting = Accounting.new
+    @accounting.images.build
   end
   def create
     @accounting = Accounting.new(accounting_params)
+
     if @accounting.save
       redirect_to @accounting
     else
@@ -38,7 +40,7 @@ class AccountingsController < ApplicationController
 
   private
     def accounting_params
-      params.require(:accounting).permit(:title, :name, :purpose, :application_date, :status)
+      params.require(:accounting).permit(:title, :name, :purpose, :application_date, :status, images_attributes: [:image_file] )
     end
 end
 
