@@ -19,7 +19,7 @@ $(document).ready(function() {
         // 週数を表示
         weekNumbers: false,
         // 高さ(px)
-        height: 500,
+        height: 600,
         // コンテンツの高さ(px)
         //contentHeight: 600,
         // カレンダーの縦横比(比率が大きくなると高さが縮む)
