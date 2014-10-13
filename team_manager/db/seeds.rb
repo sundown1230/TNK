@@ -6,21 +6,63 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+sample_user_num = 5
+sample_pm_num = 2
+sample_report_num = 3
+sample_task_num = 3
+sample_project_num = 3
+
 require 'date'
 # サンプルユーザーは手動で作ってください。
 # paperclipやらdeviseやらいろいろ絡んでて面倒なので（特に暗号化されたパスワード）
 
-# サンプルプロジェクトを挿入
-Project.create(title: 'プロジェクト1', project_manager_id: 1, starts_at: Date.today.to_s(:db), ends_at: Date.today.to_s(:db), description: "サンプルプロジェクト1", status: 0, created_at: DateTime.now.to_s(:db), updated_at:DateTime.now.to_s(:db))
-Project.create(title: 'プロジェクト2', project_manager_id: 2, starts_at: Date.today.to_s(:db), ends_at: Date.today.to_s(:db), description: "サンプルプロジェクト2", status: 0, created_at: DateTime.now.to_s(:db), updated_at:DateTime.now.to_s(:db))
-Project.create(title: 'プロジェクト3', project_manager_id: 3, starts_at: Date.today.to_s(:db), ends_at: Date.today.to_s(:db), description: "サンプルプロジェクト3", status: 1, created_at: DateTime.now.to_s(:db), updated_at:DateTime.now.to_s(:db))
-Project.create(title: 'プロジェクト4', project_manager_id: 4, starts_at: Date.today.to_s(:db), ends_at: Date.today.to_s(:db), description: "サンプルプロジェクト4", status: 1, created_at: DateTime.now.to_s(:db), updated_at:DateTime.now.to_s(:db))
-Project.create(title: 'プロジェクト5', project_manager_id: 5, starts_at: Date.today.to_s(:db), ends_at: Date.today.to_s(:db), description: "サンプルプロジェクト5", status: 2, created_at: DateTime.now.to_s(:db), updated_at:DateTime.now.to_s(:db))
 
+# サンプルユーザーの作成
+for user_i in 1..sample_user_num do
+  user = User.new(email: "user#{user_i}@gmail.com", name: "user#{user_i}", generation: 0, password: "password", description: "test user#{user_i}")
+  user.save
+end
+
+# サンプルプロジェクトを挿入
+for pm_i in 1..sample_pm_num do
+  for project_i in 1..sample_project_num do
+    project_index = (pm_i-1)*sample_project_num + project_i
+    project = Project.create(title: "プロジェクト#{project_index}", project_manager_id: pm_i, starts_at: Date.today.to_s(:db), ends_at: Date.today.to_s(:db), description: "サンプルプロジェクト", status: 0)
+  end
+end
 
 # サンプルプロジェクトレポートを挿入
-Report.create(project_id: 1, user_id: 1, title: "レポート1", text: "サンプルプロジェクトレポート1", created_at: DateTime.now.to_s(:db), updated_at:DateTime.now.to_s(:db))
-Report.create(project_id: 1, user_id: 2, title: "レポート2", text: "サンプルプロジェクトレポート2", created_at: DateTime.now.to_s(:db), updated_at:DateTime.now.to_s(:db))
-Report.create(project_id: 1, user_id: 3, title: "レポート3", text: "サンプルプロジェクトレポート3", created_at: DateTime.now.to_s(:db), updated_at:DateTime.now.to_s(:db))
+for project_i in 1..sample_project_num do
+  for report_i in 1..sample_report_num do
+    project = Project.find(project_i)
+	project.reports.create(project_id: project_i, title: "レポート#{report_i}", text: "サンプルプロジェクトレポート")
+  end
+end
 
-# サンプル資料を挿入
+# サンプルタスクを挿入
+for project_i in 1..sample_project_num do
+  for task_i in 1..sample_task_num do
+    project = Project.find(project_i)
+	due = (DateTime.now + ((project_i-1)*sample_task_num + task_i).days).to_s(:db)
+	project.tasks.create(project_id: project_i, title: "タスク#{task_i}", content: "サンプルタスク", due: due)
+  end
+end
+
+# リレーション情報の挿入
+# プロジェクト
+for user_i in 1..sample_user_num do
+  for task_i in 1..sample_project_num do 
+    Project.find(project_id)
+    project.tasks_users.create(project_id: project_index, _id: pm_i)
+  end
+end
+
+#レポート
+for user_i in 1..sample_user_num do
+  for report_i in 1..sample_report_num do 
+    if project_i == user_i && 
+      Project.find(project_id)
+      project.projects_users.create(project_id: project_index, user_id: pm_i)
+    end
+  end
+end
