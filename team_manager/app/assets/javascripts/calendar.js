@@ -108,7 +108,10 @@ $(document).ready(function() {
             {
                 events: parse_tasks(gon.tasks) 
             }
-        ]
+        ],
+		eventClick: function(calEvent, jsEvent, view){ 
+		}
+
     });
     // 動的にオプションを変更する
     //$('#calendar').fullCalendar('option', 'height', 700);
@@ -126,7 +129,8 @@ function parse_tasks(tasks){
     parsed_tasks.push({
                         title: tasks[i].title,
 						start: tasks[i].due,
-                        end: tasks[i].due
+                        end: tasks[i].due,
+						url: tasks[i].url
                         }
 					  );
   }
