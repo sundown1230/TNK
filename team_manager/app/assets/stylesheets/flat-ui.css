@@ -2466,7 +2466,7 @@ select[multiple].navbar-form .btn {
 }
 .navbar-inverse .navbar-nav > .open > .dropdown-menu > .divider {
   background-color: #2f4154;
-  height: 2px;
+  height: 30px;
   margin-left: -4px;
   margin-right: -4px;
 }
@@ -3409,8 +3409,9 @@ fieldset[disabled] .twitter-typeahead .tt-hint {
 }
 .dropdown-inverse {
   background-color: #34495e;
-  color: #cccccc;
+  color: #ffffff;
   padding: 4px 0 6px;
+  text-align: center;
 }
 .dropdown-inverse li {
   margin: 0 4px -2px;

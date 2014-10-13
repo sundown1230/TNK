@@ -4,21 +4,21 @@
 </div>
 
 <ul class="nav navbar-inverse" role="navigation">
-  <ul>
+  <table style="width:100%;">
     <% if user_signed_in? %>
-	  <li><%= image_tag current_user.avatar.url(:thumb) %></li>
-	  <li><%= current_user.name %></li>
-      <li><%= current_user.email %></li>
-      <li><%= link_to 'Edit profile', edit_user_registration_path %></li> 
-      <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+	  <tr><td><div class="text-center"><%= image_tag current_user.avatar.url(:thumb) %></div></td></tr>
+	  <tr><td><%= current_user.name %></td></tr>
+      <tr><td><%= current_user.email %></td></tr>
+      <tr><td><div class="text-center"><%= link_to 'Edit profile', edit_user_registration_path %></div></td></tr>
+      <tr><td><div class="text-center"><%= link_to "Logout", destroy_user_session_path, method: :delete %></div></td></tr>
     <% else %>
       <li><%= link_to "Sign up", new_user_registration_path %></li> 
       <li><%= link_to "Login", new_user_session_path %></li>
     <% end %>
- </ul>
+ </table>
   
   <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">プロジェクト<b class="caret"></b></a>
+    <a href="#" class="dropdown-inverse" data-toggle="dropdown">プロジェクト<b class="caret"></b></a>
     <ul class="dropdown-menu">
       <li><%= link_to 'プロジェクト一覧', projects_path %></li>
       <li><a href="#">過去のプロジェクト</a></li>
@@ -26,7 +26,7 @@
   </li>
 		
   <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">資料<b class="caret"></b></a>
+    <a href="#" class="dropdown-inverse">資料<b class="caret"></b></a>
     <ul class="dropdown-menu">
       <li><%= link_to '資料一覧', materials_path %></li>
       <li><a href="#">議事録</a></li>
@@ -36,7 +36,7 @@
   </li>
   
   <li class="dropdown">
-    <a href='#' class="dropdown-toggle" data-toggle="dropdown">各種申請<b class="caret"></b></a>
+    <a href='#' class="dropdown-inverse" data-toggle="dropdown">各種申請<b class="caret"></b></a>
     <ul class="dropdown-menu">
       <li><%= link_to '経理申請一覧',accountings_path %></li>
     </ul>
