@@ -16,12 +16,12 @@
       <td>
         <% case accounting.status %>
           <% when 1 %>
-          申請中
+          <%= link_to '申請中',edit_status_path(accounting) %>
           <% when 2 %>
-          承認
+          <%= link_to '承認',edit_status_path(accounting) %>
           <% when 3 %>
-          却下
-         <% end %>
+          <%= link_to '却下',edit_status_path(accounting) %>
+          <% end %>
       </td>
       <td><%= link_to '編集',edit_accounting_path(accounting) %></td>
       <td><%= link_to '削除',accounting_path(accounting),

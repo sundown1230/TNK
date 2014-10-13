@@ -4,12 +4,18 @@
 </p>
  
 <p>
+  <strong>PM:</strong>
+  <%= @project_manager.name %>
+</p>
+
+<p>
   <strong>Description:</strong>
   <%= @project.description %>
 </p>
 
 <p>
-<strong>プロジェクトメンバー</strong>:
+<strong>プロジェクトメンバー:</strong>
+<%= link_to "メンバー変更", project_members_edit_path(@project) %><br>
   <% @members.each do |member| %>
     <%= member.name %>,  
   <% end %>

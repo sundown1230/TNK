@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_project, only: [:new, :create, :destroy, :index, :show, :edit]
+  before_action :set_project, only: [:new, :create, :destroy, :index, :show, :edit, :update]
 
   def set_project
     @project = Project.find(params[:project_id])

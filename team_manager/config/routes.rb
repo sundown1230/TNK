@@ -8,6 +8,10 @@ TeamManager::Application.routes.draw do
   get "static_pages/usage"
   get "dashbords/home"
   
+  get "projects/:id/members_edit", to:"projects#members_edit", as: "project_members_edit"
+  post "projects/:id/members_edit", to:"projects#members_edit"
+  delete "projects/:id/members_edit/:user_id", to:"projects#member_delete"
+  
   devise_for :users
   resources :projects do
     resources :reports
@@ -20,6 +24,11 @@ TeamManager::Application.routes.draw do
   resources :accountings do
     resources :images
   end
+
+  resources :accountings
+
+  get 'accountings/:id/edit_status' => 'accountings#edit_status', as: :edit_status
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
