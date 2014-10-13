@@ -13,6 +13,11 @@
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </p>
+
+  <p>
+    <%= f.label :project_manager_id %><br>
+    <%= f.collection_select :project_manager_id, User.all, :id, :name %>
+  </p>
  
   <p>
     <%= f.label :description %><br>

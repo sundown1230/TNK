@@ -7,7 +7,11 @@ TeamManager::Application.routes.draw do
   get "static_pages/contact"
   get "static_pages/usage"
   get "dashbords/home"
-
+  
+  get "projects/:id/members_edit", to:"projects#members_edit", as: "project_members_edit"
+  post "projects/:id/members_edit", to:"projects#members_edit"
+  delete "projects/:id/members_edit/:user_id", to:"projects#member_delete"
+  
   devise_for :users
   resources :projects do
     resources :reports
