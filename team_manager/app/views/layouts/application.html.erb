@@ -9,11 +9,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= render partial: 'layouts/header' %>
-  <div id="main" class="container">
-    <div class="row">
+   <div class="col-md-2">
+     <div class="sidebar-nav affix" role="complementary">
+       <%= render partial: 'layouts/side_bar' %>
+	 </div>
+  </div>
+   <div class="col-md-10">
       <%= yield %>
-    </div>
   </div>
 </body>
 </html>
