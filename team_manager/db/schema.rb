@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140922213601) do
+ActiveRecord::Schema.define(version: 20141008121400) do
 
   create_table "accountings", force: true do |t|
     t.string   "title"
@@ -23,9 +23,14 @@ ActiveRecord::Schema.define(version: 20140922213601) do
     t.datetime "updated_at"
   end
 
-  create_table "materials_users", force: true do |t|
-    t.integer  "user_id",     null: false
-    t.integer  "material_id", null: false
+  create_table "images", force: true do |t|
+    t.string   "title"
+    t.string   "image_file_file_name"
+    t.string   "image_file_content_type"
+    t.integer  "image_file_file_size"
+    t.datetime "image_file_updated_at"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -35,6 +40,11 @@ ActiveRecord::Schema.define(version: 20140922213601) do
     t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "materials_users", force: true do |t|
+    t.integer "user_id",     null: false
+    t.integer "material_id", null: false
   end
 
   create_table "projects", force: true do |t|
@@ -49,10 +59,8 @@ ActiveRecord::Schema.define(version: 20140922213601) do
   end
 
   create_table "projects_users", force: true do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "project_id", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "user_id",    null: false
+    t.integer "project_id", null: false
   end
 
   create_table "reports", force: true do |t|
