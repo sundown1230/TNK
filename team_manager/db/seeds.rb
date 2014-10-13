@@ -51,18 +51,16 @@ end
 # リレーション情報の挿入
 # プロジェクト
 for user_i in 1..sample_user_num do
-  for task_i in 1..sample_project_num do 
-    Project.find(project_id)
-    project.tasks_users.create(project_id: project_index, _id: pm_i)
+  for project_i in 1..sample_project_num do 
+    Project.find(project_i)
+    project.projects_users.create(project_id: project_i, user_id: user_i)
   end
 end
 
 #レポート
 for user_i in 1..sample_user_num do
   for report_i in 1..sample_report_num do 
-    if project_i == user_i && 
-      Project.find(project_id)
-      project.projects_users.create(project_id: project_index, user_id: pm_i)
-    end
+      report = Report.find(report_i)
+      report.reports_users.create(report_id: report_i, user_id: user_i)
   end
 end
