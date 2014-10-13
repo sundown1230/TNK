@@ -1,19 +1,19 @@
 <div class="navbar-header">
  <!-- できればロゴの画像イメージが欲しい　-->
-  <h2><%= link_to "TNK", dashbords_home_path %></h3>
+  <h3><%= link_to "Team Manager", dashbords_home_path, class: "navbar-brand" %></h3>
 </div>
 
-<ul class="nav nav-inverse" >
+<ul class="nav navbar-inverse" role="navigation">
   <ul>
     <% if user_signed_in? %>
 	  <li><%= image_tag current_user.avatar.url(:thumb) %></li>
 	  <li><%= current_user.name %></li>
       <li><%= current_user.email %></li>
-      <li><%= link_to 'Edit profile', edit_user_registration_path, class: 'navbar-link' %></li> 
-      <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-link' %></li>
+      <li><%= link_to 'Edit profile', edit_user_registration_path %></li> 
+      <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
     <% else %>
-      <li><%= link_to "Sign up", new_user_registration_path, class: 'navbar-link' %></li> 
-      <li><%= link_to "Login", new_user_session_path, class: 'navbar-link' %></li>
+      <li><%= link_to "Sign up", new_user_registration_path %></li> 
+      <li><%= link_to "Login", new_user_session_path %></li>
     <% end %>
  </ul>
   
