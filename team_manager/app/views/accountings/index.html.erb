@@ -11,7 +11,7 @@
    <% @accountings.each do |accounting| %>
     <tr>
       <td><%= link_to accounting.title ,accounting_path(accounting) %></td>
-      <td><%= accounting.name %></td>
+      <td><%=accounting.user.name %></td>
       <td><%= accounting.application_date %></td>
       <td>
         <% case accounting.status %>
