@@ -5,6 +5,7 @@
   <tr>
     <th>タイトル</th>
     <th>ファイル名</th>
+	<th>ファイルタイプ</th>
     <th colspan="2"></th>
   </tr>
  
@@ -12,6 +13,7 @@
     <tr>
       <td><%= link_to material.title, material_path(material) %></td>
       <td><%= material.filename %></td>
+      <td><%= material.filetype %></td>
       <td><%= link_to '編集', edit_material_path(material) %></td>
       <td><%= link_to '削除', material_path(material),
 	          method: :delete, data: {confirm: "本当によろしいですか？" }%></td>

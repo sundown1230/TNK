@@ -8,8 +8,8 @@ class MaterialsController < ApplicationController
     @material = Material.new(material_params)
     file = params["material"]["content"]
     @material.filename = file.original_filename
-    @material.filetype = File.extname(file.original_filename).slice(1..-1)
-    File.open("public/"+@material.filetype+"/"+@material.filename, 'wb') { |f| 
+    #@material.filetype = File.extname(file.original_filename).slice(1..-1)
+    File.open("public/materials/"+@material.filename, 'wb') { |f|
 	  f.write(file.read)
     }
     if @material.save

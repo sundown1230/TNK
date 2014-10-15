@@ -21,6 +21,11 @@
   </p>
 
   <p>
+    <%= f.label :filetype %><br>
+    <%= f.collection_select :filetype, MaterialCategory.all, :category_name, :category_name %>
+  </p>
+  
+  <p>
   関連ユーザー<br>
   <%= f.fields_for :materials_users, @material.materials_users  do |mu| %>
     <%= mu.collection_select :user_id, User.all, :id, :name %>
