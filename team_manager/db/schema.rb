@@ -11,30 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140922213601) do
+ActiveRecord::Schema.define(version: 20141015021651) do
 
   create_table "accountings", force: true do |t|
-    t.string   "title"
-    t.string   "name"
-    t.text     "purpose"
-    t.date     "date"
-    t.integer  "status"
+    t.string   "title",                        null: false
+    t.string   "name",                         null: false
+    t.text     "purpose",                      null: false
+    t.datetime "application_date",             null: false
+    t.integer  "status",           default: 1, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "materials_users", force: true do |t|
-    t.integer  "user_id",     null: false
-    t.integer  "material_id", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "material_categories", force: true do |t|
+    t.string "category_name", null: false
   end
 
   create_table "materials", force: true do |t|
     t.string   "title",      default: "title", null: false
-    t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "filename",                     null: false
+    t.string   "filetype",                     null: false
+  end
+
+  create_table "materials_users", force: true do |t|
+    t.integer "user_id",     null: false
+    t.integer "material_id", null: false
   end
 
   create_table "projects", force: true do |t|
@@ -49,10 +52,8 @@ ActiveRecord::Schema.define(version: 20140922213601) do
   end
 
   create_table "projects_users", force: true do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "project_id", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "user_id",    null: false
+    t.integer "project_id", null: false
   end
 
   create_table "reports", force: true do |t|
