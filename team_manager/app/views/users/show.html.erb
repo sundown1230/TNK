@@ -81,3 +81,19 @@
   </tr>
   <% end %>
 </table>
+
+<h4>【経理申請】</h4>
+<table class="table">
+  <tr>
+    <td>タイトル</td>
+    <td>申請日</td>
+    <td>申請状況</td>
+  </tr>
+  <% @accountings.each do |a|%>
+  <tr>
+      <td><%= link_to a.title, accounting_path(a) %></td>
+      <td><%= a.application_date %></td>
+      <td><%= a.status %></td>
+  </tr>
+  <% end %>
+</table>
