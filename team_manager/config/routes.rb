@@ -24,6 +24,10 @@ TeamManager::Application.routes.draw do
   post "materials/:id/users_edit", to:"materials#users_edit"
   delete "materials/:id/users_edit/:user_id", to:"materials#user_delete"
   
+  get "projects/:project_id/reports/:id//users_edit", to:"reports#users_edit", as: "report_users_edit"
+  post "projects/:project_id/reports/:id/users_edit", to:"reports#users_edit"
+  delete "projects/:project_id/reports/:id/users_edit/:user_id", to:"reports#user_delete"
+  
   get 'accountings/:id/edit_status' => 'accountings#edit_status', as: :edit_status
 
   # The priority is based upon order of creation: first created -> highest priority.
