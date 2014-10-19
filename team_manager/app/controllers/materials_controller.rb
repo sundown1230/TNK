@@ -9,7 +9,7 @@ class MaterialsController < ApplicationController
     file = params["material"]["content"]
     @material.filename = file.original_filename
     #@material.filetype = File.extname(file.original_filename).slice(1..-1)
-    File.open("public/materials/"+@material.filename, 'wb') { |f|
+    File.open("public/materials/"+@material.filetype+@material.filename, 'wb') { |f|
 	  f.write(file.read)
     }
     if @material.save
