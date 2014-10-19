@@ -20,10 +20,13 @@ class MaterialsController < ApplicationController
   end
 
   def index
-    @slides = Material.where(filetype: "スライド")
-	@documents = Material.where(filetype: "ドキュメント")
+    @materials = Material.all
   end
 
+  def categorized_index
+    @materials = Material.where(filetype: params[:filetype])
+  end
+  
   def show
     @material = Material.find(params[:id])
     @materials_users = @material.users.all

@@ -27,6 +27,8 @@ TeamManager::Application.routes.draw do
 
   resources :accountings
 
+  get "materials/categorized_index/:filetype", to:"materials#categorized_index", as: "categorized_materials_index"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
