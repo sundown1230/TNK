@@ -1,5 +1,5 @@
 class MaterialsController < ApplicationController
-  before_action :set_material, only: [:show, :destroy, :edit, :update, :user_edit, :user_delete]
+  before_action :set_material, only: [:show, :destroy, :edit, :update, :users_edit, :user_delete]
   
   def new
     @material = Material.new
@@ -20,7 +20,6 @@ class MaterialsController < ApplicationController
   end
 
   def show
-	@materials_users = @material.users.all
   end
 
   def edit
@@ -38,15 +37,16 @@ class MaterialsController < ApplicationController
 	@material.destroy
 	redirect_to materials_path
   end
+
   def users_edit
-    @new_member = @material.materials_users.build
-    render 'members_edit'
+    @new_user = @material.materials_users.build
+    render 'users_edit'
   end
 
   def user_delete
     @material_user = @material.materials_users.where(user_id: params[:user_id], material_id: @material.id).first
     @material_user.destroy
-    redirect_to project_members_edit_path(@material)
+    redirect_to material_users_edit_path(@material)
   end
 
 
