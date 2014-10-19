@@ -39,16 +39,16 @@ class ReportsController < ApplicationController
     redirect_to project_path(@project)
   end
 
-   def users_edit
-     @new_user = @report.reports_users.build
-	 render 'users_edit'
-   end
+  def users_edit
+    @new_user = @report.reports_users.build
+	render 'users_edit'
+  end
    
-   def user_delete
-     @report_user = @report.reports_users.where(user_id: params[:user_id], report_id: @report.id).first
-     @report_user.destroy
-     redirect_to report_users_edit_path(@report.project_id, @report)
-   end
+  def user_delete
+    @report_user = @report.reports_users.where(user_id: params[:user_id], report_id: @report.id).first
+    @report_user.destroy
+    redirect_to report_users_edit_path(@report.project_id, @report)
+  end
 
   private
     def report_params

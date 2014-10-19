@@ -1,9 +1,6 @@
 class TasksController < ApplicationController
-  before_action :set_project, only: [:new, :create, :destroy, :index, :show, :edit, :update]
-
-  def set_project
-    @project = Project.find(params[:project_id])
-  end
+  before_action :set_project, only: [:new, :create, :show, :edit, :update, :destroy, :index, :users_edit, :user_delete]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :users_edit, :user_delete]
   
   def new
 	@task = @project.tasks.build
@@ -47,8 +44,28 @@ class TasksController < ApplicationController
     redirect_to project_path(@project)
   end
  
+  def users_edit
+    @new_user = @task.tasks_users.build
+    render 'users_edit'
+  end
+
+  def user_delete
+    @task_user = @task.tasks_users.where(user_id: params[:user_id], report_id: @report.id).first
+    @task_user.destroy
+    redirect_to taskt_users_edit_path(@task.project_id, @task)
+  end
+
+
   private
     def task_params
       params.require(:task).permit(:id, :title, :project_id, :content, :due, users_attributes: [:id, :name], tasks_users_attributes: [:id, :task_id, :user_id])
+    end
+  
+    def set_project
+      @project = Project.find(params[:project_id])
+    end
+    
+	def set_task
+      @task = Task.find(params[:id])
     end
 end
