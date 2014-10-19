@@ -6,6 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-MaterialCategory.create(category_name: "スライド")
-MaterialCategory.create(category_name: "ドキュメント")
+MaterialCategory.create(category_name: "slide")
+MaterialCategory.create(category_name: "document")
 MaterialCategory.create(category_name: "その他")
