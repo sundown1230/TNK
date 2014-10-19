@@ -1,16 +1,5 @@
 TeamManager::Application.routes.draw do
-  get "materials/index"
-  get "materials/edit"
-  get "materials/new"
   root "dashbords#home"
-  get "users/index"
-  get "static_pages/contact"
-  get "static_pages/usage"
-  get "dashbords/home"
-  
-  get "projects/:id/members_edit", to:"projects#members_edit", as: "project_members_edit"
-  post "projects/:id/members_edit", to:"projects#members_edit"
-  delete "projects/:id/members_edit/:user_id", to:"projects#member_delete"
   
   devise_for :users
   resources :projects do
@@ -18,15 +7,23 @@ TeamManager::Application.routes.draw do
 	resources :tasks
   end
   resources :users
-
   resources :materials
-  
   resources :accountings do
     resources :images
   end
-
   resources :accountings
-
+  
+  get "static_pages/contact"
+  get "static_pages/usage"
+  
+  get "projects/:id/members_edit", to:"projects#members_edit", as: "project_members_edit"
+  post "projects/:id/members_edit", to:"projects#members_edit"
+  delete "projects/:id/members_edit/:user_id", to:"projects#member_delete"
+  
+  get "materials/:id/users_edit", to:"materials#users_edit", as: "material_users_edit"
+  post "materials/:id/users_edit", to:"materials#users_edit"
+  delete "materials/:id/users_edit/:user_id", to:"materials#user_delete"
+  
   get 'accountings/:id/edit_status' => 'accountings#edit_status', as: :edit_status
 
   # The priority is based upon order of creation: first created -> highest priority.
