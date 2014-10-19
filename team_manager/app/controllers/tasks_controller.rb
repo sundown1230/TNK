@@ -50,9 +50,9 @@ class TasksController < ApplicationController
   end
 
   def user_delete
-    @task_user = @task.tasks_users.where(user_id: params[:user_id], report_id: @report.id).first
+    @task_user = @task.tasks_users.where(user_id: params[:user_id], task_id: @task.id).first
     @task_user.destroy
-    redirect_to taskt_users_edit_path(@task.project_id, @task)
+    redirect_to task_users_edit_path(@task.project_id, @task)
   end
 
 
