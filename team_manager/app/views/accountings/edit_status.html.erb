@@ -1,0 +1,13 @@
+<h1>経理申請申請状況の編集</h1>
+<%= form_for @accounting do |f| %>
+
+  <% f.label :status %><br>
+  <%= f.radio_button :status, "1" %> 申請中
+  <%= f.radio_button :status, "2" %> 承認
+  <%= f.radio_button :status, "3" %> 却下
+
+  <p>
+  <%= f.submit %>
+  </p>
+  <% end %>
+  <%= link_to '経理申請 一覧に戻る', accounting_path %>

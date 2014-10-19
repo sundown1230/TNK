@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20141015021651) do
+  create_table "material_categories", force: true do |t|
+    t.string "category_name", null: false
+  end
 
   create_table "accountings", force: true do |t|
     t.string   "title",                        null: false
@@ -23,8 +27,16 @@ ActiveRecord::Schema.define(version: 20141015021651) do
     t.datetime "updated_at"
   end
 
-  create_table "material_categories", force: true do |t|
-    t.string "category_name", null: false
+  create_table "images", force: true do |t|
+    t.string   "title"
+    t.string   "image_file_file_name"
+    t.string   "image_file_content_type"
+    t.integer  "image_file_file_size"
+    t.datetime "image_file_updated_at"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "materials", force: true do |t|
@@ -33,6 +45,11 @@ ActiveRecord::Schema.define(version: 20141015021651) do
     t.datetime "updated_at"
     t.string   "filename",                     null: false
     t.string   "filetype",                     null: false
+  end
+
+  create_table "materials_users", force: true do |t|
+    t.integer "user_id",     null: false
+    t.integer "material_id", null: false
   end
 
   create_table "materials_users", force: true do |t|
