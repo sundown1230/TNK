@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   require "kaminari"
   def index
-    @users = User.order("generation").page(params[:page]).per(1)
+    @users = User.order("generation").page(params[:page]).per(3)
   end
 
   def destroy

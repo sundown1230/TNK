@@ -1,25 +1,36 @@
 <h1>メンバー一覧</h1>
-<% @users.each do |user| %>
-  <div class="row">
-  <div class="col-sm-4 col-md-2 text-center">
+<div class="row">
+  <% count = 0 %>
+  <% @users.each do |user| %>
+    <% if(count%4 == 0)%> 
+      <div class="row">
+    <% end %>
+    <div class="col-sm-6 col-md-4 text-center">
       <div class="thumbnail">
         <%= link_to user.name, user_path(user) %>
         <%= image_tag user.avatar.url(:medium), class: "img-rounded" %>
         <div class="caption">
-          <%= user.generation %><br>
+          <%= user.generation %>期<br>
+          <%= user.email %><br>
           <%= user.description %><br>
-          <%= user.email %>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
-<div class="pagination pagination-success">
-  <a href="#fakelink" class="btn btn-success previous"><i class="fui-arrow-left"></i></a>
+    <% if (count+1)%4 == 0%> 
+      <% count += 1 %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="pagination pagination-success text-center">
+  <a href="#" class="btn btn-success previous"><i class="fui-arrow-left"></i></a>
   <ul>
-    <li><a href="#fakelink">5</a></li>
+  <% for page_index in 1..@users.num_pages do %>  
+	<li><a href="#fakelink"><%= page_index %></a></li>
+  <% end %>
   </ul>
-  <a href="#fakelink" class="btn btn-success next">
+  <a href="#" class="btn btn-success next">
   <i class="fui-arrow-right"></i></a>
 </div> <!-- /pagination -->
 
