@@ -1,20 +1,26 @@
 <h1>メンバー一覧</h1>
-<table class="table table-default">
-  <tr>
-    <th></th>
-    <th>名前</th>
-    <th>代</th>
-    <th>一言コメント</th>
-    <th>email</th>
-  </tr>
- 
-  <% @users.each do |user| %>
-    <tr>
-	  <td><%= image_tag user.avatar.url(:thumb) %></td>
-      <td><%= link_to user.name, user_path(user) %></td>
-      <td><%= user.generation %></td>
-      <td><%= user.description %></td>   
-      <td><%= user.email %></td>
-    </tr>
-  <% end %>
-</table>
+<% @users.each do |user| %>
+  <div class="row">
+  <div class="col-sm-4 col-md-2 text-center">
+      <div class="thumbnail">
+        <%= link_to user.name, user_path(user) %>
+        <%= image_tag user.avatar.url(:medium), class: "img-rounded" %>
+        <div class="caption">
+          <%= user.generation %><br>
+          <%= user.description %><br>
+          <%= user.email %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<div class="pagination pagination-success">
+  <a href="#fakelink" class="btn btn-success previous"><i class="fui-arrow-left"></i></a>
+  <ul>
+    <li><a href="#fakelink">5</a></li>
+  </ul>
+  <a href="#fakelink" class="btn btn-success next">
+  <i class="fui-arrow-right"></i></a>
+</div> <!-- /pagination -->
+
+<%= paginate @users %>
