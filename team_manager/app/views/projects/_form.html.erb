@@ -1,37 +1,39 @@
-<%= form_for @project do |f| %>
-  <% if @project.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@project.errors.count, "error") %> 入力内容が適切ではありません。	</h2>
-    <ul>
-    <% @project.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+<div class="form_background">
+  <%= form_for @project do |f| %>
+    <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> 入力内容が適切ではありません。	</h2>
+      <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
     <% end %>
-    </ul>
-  </div>
+    <p>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </p>
+
+    <p>
+      <%= f.label :project_manager_id %><br>
+      <%= f.collection_select :project_manager_id, User.all, :id, :name %>
+    </p>
+ 
+    <p>
+      <%= f.label :description %><br>
+      <%= f.text_area :description %>
+    </p>
+
+    <p>
+    Member<br>
+      <%= f.fields_for :projects_users, @project.projects_users  do |pu| %>
+        <%= pu.collection_select :user_id, User.all, :id, :name %>
+      <% end %>
+    </p>
+ 
+    <p>
+      <%= f.submit class: "btn btn-primary"%>
+    </p>
   <% end %>
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
-
-  <p>
-    <%= f.label :project_manager_id %><br>
-    <%= f.collection_select :project_manager_id, User.all, :id, :name %>
-  </p>
- 
-  <p>
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </p>
-
-  <p>
-  Member<br>
-    <%= f.fields_for :projects_users, @project.projects_users  do |pu| %>
-      <%= pu.collection_select :user_id, User.all, :id, :name %>
-	<% end %>
-  </p>
- 
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+</div>
