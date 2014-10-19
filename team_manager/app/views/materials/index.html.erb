@@ -1,23 +1,48 @@
 <h1>資料一覧</h1>
+<%= link_to "ファイルをアップロード", new_material_path %>
 
-<%= link_to "新規ドキュメントの作成", new_material_path %>
-<table class="table">
-  <tr>
-    <th>タイトル</th>
-    <th>ファイル名</th>
-	<th>ファイルタイプ</th>
-    <th colspan="2"></th>
-  </tr>
+<div class="row">
+  
+  <div class="col-md-6">
+    <h4>【ドキュメント】</h4>
+    <table class="table">
+      <tr>
+        <th>タイトル</th>
+        <th>ファイル名</th>
+        <th colspan="2"></th>
+      </tr>
  
-  <% @materials.each do |material| %>
-    <tr>
-      <td><%= link_to material.title, material_path(material) %></td>
-      <td><%= material.filename %></td>
-      <td><%= material.filetype %></td>
-      <td><%= link_to '編集', edit_material_path(material) %></td>
-      <td><%= link_to '削除', material_path(material),
+      <% @documents.each do |material| %>
+      <tr>
+        <td><%= link_to material.title, material_path(material) %></td>
+        <td><%= material.filename %></td>
+        <td><%= link_to '編集', edit_material_path(material) %></td>
+        <td><%= link_to '削除', material_path(material),
 	          method: :delete, data: {confirm: "本当によろしいですか？" }%></td>
-	</tr>
-	</tr>
-  <% end %>
-</table>
+	  </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="col-md-6">
+    <h4>【スライド】</h4>
+    <table class="table">
+      <tr>
+        <th>タイトル</th>
+        <th>ファイル名</th>
+        <th colspan="2"></th>
+      </tr>
+ 
+      <% @slides.each do |material| %>
+      <tr>
+        <td><%= link_to material.title, material_path(material) %></td>
+        <td><%= material.filename %></td>
+        <td><%= link_to '編集', edit_material_path(material) %></td>
+        <td><%= link_to '削除', material_path(material),
+	          method: :delete, data: {confirm: "本当によろしいですか？" }%></td>
+	  </tr>
+      <% end %>
+    </table>
+  </div>
+
+</div>

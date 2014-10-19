@@ -20,7 +20,8 @@ class MaterialsController < ApplicationController
   end
 
   def index
-    @materials = Material.all
+    @slides = Material.where(filetype: "スライド")
+	@documents = Material.where(filetype: "ドキュメント")
   end
 
   def show
