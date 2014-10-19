@@ -50,17 +50,25 @@ end
 
 # リレーション情報の挿入
 # プロジェクト
-for user_i in 1..sample_user_num do
-  for project_i in 1..sample_project_num do 
+for user_i in 1..User.all.length do
+  for project_i in 1..Project.all.length do 
     Project.find(project_i)
     project.projects_users.create(project_id: project_i, user_id: user_i)
   end
 end
 
 #レポート
-for user_i in 1..sample_user_num do
-  for report_i in 1..sample_report_num do 
+for user_i in 1..User.all.length do
+  for report_i in 1..Report.all.length do 
       report = Report.find(report_i)
       report.reports_users.create(report_id: report_i, user_id: user_i)
+  end
+end
+
+#タスク
+for user_i in 1..User.all.length do
+  for task_i in 1..Task.all.length do 
+      task = Task.find(task_i)
+      task.tasks_users.create(task_id: task_i, user_id: user_i)
   end
 end
