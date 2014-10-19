@@ -1,5 +1,5 @@
 <div class="form_background">
-  <%= form_for @project do |f| %>
+  <%= form_for @project, html: {class: "form-group"} do |f| %>
     <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project.errors.count, "error") %> 入力内容が適切ではありません。	</h2>
@@ -17,7 +17,7 @@
 
     <p>
       <%= f.label :project_manager_id %><br>
-      <%= f.collection_select :project_manager_id, User.all, :id, :name %>
+      <%= f.collection_select :project_manager_id, User.all, :id, :name, class: "form-control select select-inverse select-sm"%>
     </p>
  
     <p>
