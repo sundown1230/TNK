@@ -1,9 +1,10 @@
 class Accounting < ActiveRecord::Base
+  belongs_to :user
+  has_many :images, as: :imageable, autosave: true, dependent: :destroy
+  accepts_nested_attributes_for :images
+  
   validates :title, presence: true
   validates :purpose, presence: true
   validates :application_date, presence: true  
   validates :status, presence:true
-  has_many :images, as: :imageable, autosave: true, dependent: :destroy
-  accepts_nested_attributes_for :images
-  belongs_to :user
 end
