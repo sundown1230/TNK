@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 	@projects = @user.projects.limit(3)
 	@reports = @user.reports.limit(3)
 	@tasks = @user.tasks.limit(3)
+	@accountings = @user.accountings.limit(3)
   end
 
   private

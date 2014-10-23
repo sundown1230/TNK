@@ -5,9 +5,8 @@ class AccountingsController < ApplicationController
   end
   def create
     @accounting = Accounting.new(accounting_params)
-
     if @accounting.save
-      redirect_to @accounting
+      redirect_to accounting_path(@accounting)
     else
       render 'new'
     end
@@ -27,7 +26,7 @@ class AccountingsController < ApplicationController
   def update
     @accounting = Accounting.find(params[:id])
     if @accounting.update(accounting_params)
-      redirect_to @accounting
+      redirect_to accounting_path(@accounting)
     else
       render 'edit'
     end
@@ -40,7 +39,7 @@ class AccountingsController < ApplicationController
 
   private
     def accounting_params
-      params.require(:accounting).permit(:title, :name, :purpose, :application_date, :status, images_attributes: [:image_file] )
+      params.require(:accounting).permit(:title, :purpose, :application_date, :status, :user, :user_id, images_attributes: [:image_file] )
     end
 end
 
