@@ -1,0 +1,29 @@
+<h1>メンバーの編集</h1>
+<table class="table">
+  <tr>
+    <th>名前</th>
+    <th></th>
+  </tr>
+  <% @material.users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+	<td><%= link_to '削除', material_path(@material)+"/users_edit/"+user.id.to_s, method: :delete,
+	        data: { confirm: '本当によろしいですか？' }%></td>
+  </tr>
+  <% end %>
+</table>
+
+<h4>メンバーの追加</h4>
+<p>
+<%= form_for @material do |f| %>
+  <%= f.fields_for :materials_users, @new_user do |mu| %>
+	<%= mu.collection_select :user_id, User.all, :id, :name  %>
+  <% end %>
+</P>
+
+<p>
+  <%= f.submit("追加する")%>
+</p>
+<% end %>
+
+<%= link_to "プロジェクトページに戻る", material_path(@material) %>

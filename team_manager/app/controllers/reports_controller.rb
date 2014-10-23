@@ -1,9 +1,6 @@
 class ReportsController < ApplicationController
-  before_action :set_project, only: [:new, :create, :show, :edit, :update, :destroy, :index]
-
-  def set_project
-    @project = Project.find(params[:project_id])
-  end
+  before_action :set_project, only: [:new, :create, :show, :edit, :update, :destroy, :index, :users_edit, :user_delete]
+  before_action :set_report, only: [:show, :edit, :update, :destroy, :users_edit, :user_delete]
 
   def new
     @report = @project.reports.build
@@ -24,16 +21,12 @@ class ReportsController < ApplicationController
   end
 
   def show
-    @report = @project.reports.find(params[:id])
-    @authors = @report.users.all
   end
 
   def edit
-    @report = @project.reports.find(params[:id])
   end
 
   def update
-    @report = @project.reports.find(params[:id])
     if @report.update(report_params)
 	  redirect_to project_report_path(@project, @report)
     else
@@ -42,13 +35,31 @@ class ReportsController < ApplicationController
   end
  
   def destroy
-    @report = @project.reports.find(params[:id])
     @report.destroy
     redirect_to project_path(@project)
   end
- 
+
+  def users_edit
+    @new_user = @report.reports_users.build
+	render 'users_edit'
+  end
+   
+  def user_delete
+    @report_user = @report.reports_users.where(user_id: params[:user_id], report_id: @report.id).first
+    @report_user.destroy
+    redirect_to report_users_edit_path(@report.project_id, @report)
+  end
+
   private
     def report_params
       params.require(:report).permit(:id, :title, :user_id, :text, users_attributes: [:id, :name], reports_users_attributes: [:id, :user_id, :report_id])
+    end
+  
+    def set_project
+      @project = Project.find(params[:project_id])
+    end
+
+    def set_report
+      @report = Report.find(params[:id])
     end
 end

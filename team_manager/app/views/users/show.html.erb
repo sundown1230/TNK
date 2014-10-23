@@ -26,12 +26,16 @@
 <table class="table">
   <tr>
     <td>ファイル名</td>
-    <td>概要</td>
+    <td>関連ユーザー</td>
   </tr>
-  <% @materials.each do |m|%>
+  <% @materials.each do |m| %>
   <tr>
       <td><%= link_to m.title, material_path(m) %></td>
-      <td><%= m.text %></td>
+	  <td>
+	    <% m.users.each do |mu| %>
+	      <%= mu.name %>, 
+	    <% end %>
+      </td>
   </tr>
   <% end %>
 </table>
