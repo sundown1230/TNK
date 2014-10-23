@@ -15,8 +15,8 @@
 /log/*.log
 /tmp
 
-# Ignore user's avatar pictures
-/publish/system/users
+# Ignore public files
+/public/
 
 # Ignore database configuration data
 /config/database.yml

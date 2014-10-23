@@ -26,10 +26,9 @@
 		<li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">資料<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><%= link_to '資料一覧', materials_path %></li>
-            <li><a href="#">議事録</a></li>
-            <li class="divider"></li>
-            <li><a href="#">引き継ぎ資料</a></li>
+            <li><%= link_to '全資料一覧', materials_path %></li>
+            <li><%= link_to 'ドキュメント一覧', categorized_materials_index_path(filetype: "document") %></li>
+            <li><%= link_to 'スライド一覧', categorized_materials_index_path(filetype: "slide") %></li>
           </ul>
         </li>
    <li class="dropdown">

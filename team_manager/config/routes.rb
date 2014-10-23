@@ -2,21 +2,31 @@ TeamManager::Application.routes.draw do
   root "dashbords#home"
   
   devise_for :users
+  resources :users
   resources :projects do
     resources :reports
 	resources :tasks
   end
-  resources :users
-  resources :materials
+
+  resources :materials do
+    member do
+	  get "download"
+	end
+
+    collection do
+	  post "upload"
+	end
+  end
+  
   resources :accountings do
     resources :images
   end
-  resources :accountings
-  
+
+  get "materials/categorized_index/:filetype", to:"materials#categorized_index", as: "categorized_materials_index"
   get "static_pages/contact"
   get "static_pages/usage"
   
-  # projectメンバー編集
+# projectメンバー編集
   get "projects/:id/members_edit", to:"projects#members_edit", as: "project_members_edit"
   post "projects/:id/members_edit", to:"projects#members_edit"
   delete "projects/:id/members_edit/:user_id", to:"projects#member_delete"

@@ -6,6 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+MaterialCategory.create(category_name: "slide")
+MaterialCategory.create(category_name: "document")
+MaterialCategory.create(category_name: "その他")
+
 sample_user_num = 5
 sample_pm_num = 2
 sample_report_num = 3
@@ -72,3 +76,4 @@ for user_i in 1..User.all.length do
     task.tasks_users.create(task_id: task_i, user_id: user_i)
   end
 end
+>>>>>>> 34dbf9885862574608865ecc6e9ee0f0aa482dc7
