@@ -5,16 +5,10 @@
 </p>
 
 <p>
-  <strong>Author:</strong>
- <% @authors.each do |author| %>
-   <%= author.name %>,
- <% end %>
-</p>
-
-<p>
   <strong>Text:</strong>
   <%= @report.text %>
 </p>
 
-<%= link_to 'プロジェクトページに戻る', project_reports_path %>
+<%= render 'users' %>
+<%= link_to 'レポート一覧に戻る', project_reports_path %>
 | <%= link_to 'レポート内容を編集する', edit_project_report_path(@project, @report) %>

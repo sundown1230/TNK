@@ -1,0 +1,28 @@
+<h1>メンバーの編集</h1>
+<table class="table">
+  <tr>
+    <th>名前</th>
+    <th></th>
+  </tr>
+  <% @report.users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+	<td><%= link_to '削除', project_report_path(@report.project_id, @report)+"/users_edit/"+user.id.to_s, method: :delete,
+	        data: { confirm: '本当によろしいですか？' }%></td>
+  </tr>
+  <% end %>
+</table>
+
+<h4>メンバーの追加</h4>
+<p>
+<%= form_for([@project, @report]) do |f| %>
+  <%= f.fields_for :reports_users, @new_user do |ru| %>
+    <%= ru.collection_select :user_id, User.all, :id, :name %>
+  <% end %>
+</p>
+<p>
+  <%= f.submit("追加する") %>
+</p>
+<% end %>
+
+<%= link_to "レポートページに戻る", project_report_path(@project, @report) %>

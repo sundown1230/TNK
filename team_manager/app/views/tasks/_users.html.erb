@@ -1,12 +1,12 @@
 <h5>関連ユーザー</h5>
-<%= link_to "メンバー変更", material_users_edit_path(@material) %><br>
+<%= link_to "メンバー変更", task_users_edit_path(@task.project_id, @task) %><br>
 <table class="table">
   <tr>
 	<th>Name</th>
 	<th>Generation</th>
 	<th>Email</th>
   </tr>
-  <% @material.users.each do |user| %>
+  <% @task.users.each do |user| %>
   <tr>
 	<td><%= user.name %></td>
 	<td><%= user.generation %></td>

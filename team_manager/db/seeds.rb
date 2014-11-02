@@ -24,7 +24,7 @@ for user_i in 1..sample_user_num do
 end
 
 # サンプルプロジェクトを挿入
-for pm_i in 1..sample_pm_num do
+for pm_i in 1..User.all.length do
   for project_i in 1..sample_project_num do
     project_index = (pm_i-1)*sample_project_num + project_i
     project = Project.create(title: "プロジェクト#{project_index}", project_manager_id: pm_i, starts_at: Date.today.to_s(:db), ends_at: Date.today.to_s(:db), description: "サンプルプロジェクト", status: 0)
@@ -50,17 +50,25 @@ end
 
 # リレーション情報の挿入
 # プロジェクト
-for user_i in 1..sample_user_num do
-  for project_i in 1..sample_project_num do 
-    Project.find(project_i)
+for user_i in 1..User.all.length do
+  for project_i in 1..Peoject.all.length do 
+    project = Project.find(project_i)
     project.projects_users.create(project_id: project_i, user_id: user_i)
   end
 end
 
 #レポート
-for user_i in 1..sample_user_num do
-  for report_i in 1..sample_report_num do 
-      report = Report.find(report_i)
-      report.reports_users.create(report_id: report_i, user_id: user_i)
+for user_i in 1..User.all.length do
+  for report_i in 1..Report.all.length do 
+    report = Report.find(report_i)
+    report.reports_users.create(report_id: report_i, user_id: user_i)
+  end
+end
+
+#タスク
+for user_i in 1..User.all.length do
+  for task_i in 1..Task.all.length do 
+    task = Task.find(task_i)
+    task.tasks_users.create(task_id: task_i, user_id: user_i)
   end
 end

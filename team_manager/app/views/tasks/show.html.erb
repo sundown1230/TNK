@@ -10,15 +10,9 @@
 </p>
 
 <p>
-  <strong>user:</strong>
-  <% @assignees.each do |a| %>
-    <%= a.name %>, 
-  <% end %>
-</p>
-
-<p>
   <strong>Content:</strong>
   <%= @task.content %>
 </p>
+<%= render 'users' %>
 <%= link_to 'プロジェクトページに戻る', project_path(@project) %>
 | <%= link_to 'タスク内容を編集する', edit_project_task_path(@project, @task) %>
