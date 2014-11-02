@@ -1,7 +1,9 @@
 class MaterialsController < ApplicationController
+  before_action :set_material, only: [:show, :destroy, :edit, :update, :users_edit, :user_delete]
+  
   def new
     @material = Material.new
-	4.times { @material.materials_users.build }
+	@material.materials_users.build
   end
 
   def create
@@ -18,16 +20,12 @@ class MaterialsController < ApplicationController
   end
 
   def show
-    @material = Material.find(params[:id])
-	@materials_users = @material.users.all
   end
 
   def edit
-    @material = Material.find(params[:id])
   end
 
   def update
-    @material = Material.find(params[:id])
     if @material.update(material_params)
       redirect_to @material
     else
@@ -36,13 +34,29 @@ class MaterialsController < ApplicationController
   end
 
   def destroy
-    @material = Material.find(params[:id])
 	@material.destroy
 	redirect_to materials_path
   end
 
+  def users_edit
+    @new_user = @material.materials_users.build
+    render 'users_edit'
+  end
+
+  def user_delete
+    @material_user = @material.materials_users.where(user_id: params[:user_id], material_id: @material.id).first
+    @material_user.destroy
+    redirect_to material_users_edit_path(@material)
+  end
+
+
+
   private
     def material_params
 	  params.require(:material).permit(:id, :title, :text, users_attributes: [:id, :name], materials_users_attributes: [:id, :user_id, :material_id])
+	end
+
+	def set_material
+	  @material = Material.find(params[:id])
 	end
 end
