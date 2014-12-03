@@ -16,7 +16,7 @@
 /tmp
 
 # Ignore user's avatar pictures
-/publish/system/users
+/publish/
 
 # Ignore database configuration data
 /config/database.yml
