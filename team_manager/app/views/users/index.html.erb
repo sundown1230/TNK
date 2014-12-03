@@ -1,37 +1,21 @@
 <h1>メンバー一覧</h1>
-<div class="row">
-  <% count = 0 %>
-  <% @users.each do |user| %>
-    <% if(count%4 == 0)%> 
-      <div class="row">
-    <% end %>
-    <div class="col-sm-6 col-md-4 text-center">
-      <div class="thumbnail">
-        <%= link_to user.name, user_path(user) %>
-        <%= image_tag user.avatar.url(:medium), class: "img-rounded" %>
-        <div class="caption">
-          <%= user.generation %>期<br>
-          <%= user.email %><br>
-          <%= user.description %><br>
-        </div>
-      </div>
-    </div>
-    <% if (count+1)%4 == 0%> 
-      <% count += 1 %>
-      </div>
-    <% end %>
-  <% end %>
-</div>
-
-<div class="pagination pagination-success text-center">
-  <a href="#" class="btn btn-success previous"><i class="fui-arrow-left"></i></a>
-  <ul>
-  <% for page_index in 1..@users.num_pages do %>  
-	<li><a href="#fakelink"><%= page_index %></a></li>
-  <% end %>
-  </ul>
-  <a href="#" class="btn btn-success next">
-  <i class="fui-arrow-right"></i></a>
-</div> <!-- /pagination -->
-
 <%= paginate @users %>
+<table class="table table-default">
+  <tr>
+    <th></th>
+    <th>名前</th>
+    <th>代</th>
+    <th>一言コメント</th>
+    <th>email</th>
+  </tr>
+ 
+  <% @users.each do |user| %>
+    <tr>
+	  <td><%= image_tag user.avatar.url(:thumb) %></td>
+      <td><%= link_to user.name, user_path(user) %></td>
+      <td><%= user.generation %></td>
+      <td><%= user.description %></td>   
+      <td><%= user.email %></td>
+    </tr>
+  <% end %>
+</table>

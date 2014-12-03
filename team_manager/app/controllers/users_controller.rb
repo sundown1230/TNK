@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-  require "kaminari"
   def index
-    @users = User.order("generation").page(params[:page]).per(3)
+    @users = User.page(params[:page]).per(10)
   end
 
   def destroy
@@ -16,6 +15,16 @@ class UsersController < ApplicationController
 	@projects = @user.projects.limit(3)
 	@reports = @user.reports.limit(3)
 	@tasks = @user.tasks.limit(3)
+	all_tasks = @user.tasks
+    gon.tasks = []
+    task_num = all_tasks.length
+    for i in 0..task_num-1 do
+      task = {"title"=> all_tasks[i].title,
+              "due"=> all_tasks[i].due,
+              "url"=> project_task_path(all_tasks[i].project_id, all_tasks[i].id)
+             }
+      gon.tasks.push(task)  
+	end
   end
 
   private
