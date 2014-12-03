@@ -51,6 +51,24 @@
       </tr>
     <% end %>
   </table>
+  
+  <h4>【資料】</h4>
+  <table class="table">
+  <tr>
+    <td>ファイル名</td>
+    <td>関連ユーザー</td>
+  </tr>
+  <% @materials.each do |m| %>
+  <tr>
+      <td><%= link_to m.title, material_path(m) %></td>
+	  <td>
+	    <% m.users.each do |mu| %>
+	      <%= mu.name %>, 
+	    <% end %>
+      </td>
+  </tr>
+  <% end %>
+</table>
 
   <h4>【レポート】</h4>
   <table class="table">
@@ -82,4 +100,30 @@
         <td><%= t.due.to_s(:db)%></td>
     </tr>
     <% end %>
+  </table>
+
+
+  <h4>【経理申請】</h4>
+  <table class="table">
+    <tr>
+      <td>タイトル</td>
+      <td>申請日</td>
+      <td>申請状況</td>
+    </tr>
+    <% @accountings.each do |a|%>
+    <tr>
+        <td><%= link_to a.title, accounting_path(a) %></td>
+        <td><%= a.application_date %></td>
+        <td>
+          <% case a.status %>
+          <% when 1 %>
+            申請中
+          <% when 2 %>
+            承認
+          <% when 3 %>
+            却下
+          <% end %>
+        </td>
+    </tr>
+  <% end %>
   </table>
