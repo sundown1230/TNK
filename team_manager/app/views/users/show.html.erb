@@ -1,29 +1,59 @@
-<center>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.avatar.url %>
-</center>
-<br>
-<table class="table">
-  <tr>
-    <td>代</td>
-	<td><%= @user.generation%></td>
-  </tr>
-  <tr>
-    <td>一言コメント</td>
-	<td><%= @user.description%></td>
-  </tr>
-  <tr>
-    <td>連絡先</td>
-    <td><%= @user.email %></td>
-  </tr>
-</table>
+<div class="col-md-4">
+  <div class="well">
+    <h3><%= @user.name %></h3>
+    <%= image_tag @user.avatar.url %>
+    <br>
+    <table class="table">
+      <tr>
+        <td>代</td>
+        <td><%= @user.generation%></td>
+      </tr>
+      <tr>
+        <td>一言コメント</td>
+     　 <td><%= @user.description%></td>
+      </tr>
+      <tr>
+        <td>連絡先</td>
+        <td><%= @user.email %></td>
+      </tr>
+    </table>
+    <% if current_user == @user %>
+      <%=  link_to "プロフィールを編集する", edit_user_registration_path %>
+    <% end %>
+  </div>
+</div>
 
-<% if current_user == @user %>
-  <%=  link_to "プロフィールを編集する", edit_user_registration_path %>
-<% end %>
+<div class="col-md-8">
+  <h4>【資料】</h4>
+  <table class="table">
+    <tr>
+      <td>ファイル名</td>
+      <td>概要</td>
+    </tr>
+    <% @materials.each do |m|%>
+      <tr>
+        <td><%= link_to m.title, material_path(m) %></td>
+        <td><%= m.text %></td>
+      </tr>
+    <% end %>
+  </table>
 
-<h4>【資料】</h4>
-<table class="table">
+  <h4>【プロジェクト】</h4>
+  <table class="table">
+    <tr>
+      <td>プロジェクト名</td>
+      <td>概要</td>
+    </tr>
+    <% @projects.each do |p|%>
+      <tr>
+        <td><%= link_to p.title, project_path(p) %></td>
+        <td><%= p.description %></td>
+      </tr>
+    <% end %>
+  </table>
+  
+  <h4>【資料】</h4>
+  <table class="table">
   <tr>
     <td>ファイル名</td>
     <td>関連ユーザー</td>
@@ -40,73 +70,60 @@
   <% end %>
 </table>
 
-<h4>【プロジェクト】</h4>
-<table class="table">
-  <tr>
-    <td>プロジェクト名</td>
-    <td>概要</td>
-  </tr>
-  <% @projects.each do |p|%>
-  <tr>
-      <td><%= link_to p.title, project_path(p) %></td>
-      <td><%= p.description %></td>
-  </tr>
-  <% end %>
-</table>
+  <h4>【レポート】</h4>
+  <table class="table">
+    <tr>
+      <td>タイトル</td>
+      <td>プロジェクト名</td>
+      <td>内容</td>
+    </tr>
+    <% @reports.each do |r|%>
+      <tr>
+        <td><%= link_to r.title, project_report_path(r.project_id, r) %></td>
+        <td><%= r.project.title %></td>
+        <td><%= r.text %></td>
+      </tr>
+    <% end %>
+  </table>
 
-<h4>【レポート】</h4>
-<table class="table">
-  <tr>
-    <td>タイトル</td>
-    <td>プロジェクト名</td>
-    <td>内容</td>
-  </tr>
-  <% @reports.each do |r|%>
-  <tr>
-      <td><%= link_to r.title, project_report_path(r.project_id, r) %></td>
-      <td><%= r.project.title %></td>
-      <td><%= r.text %></td>
-  </tr>
-  <% end %>
-</table>
+  <h4>【タスク】</h4>
+  <table class="table">
+    <tr>
+      <td>タイトル</td>
+      <td>プロジェクト名</td>
+      <td>締め切り</td>
+    </tr>
+    <% @tasks.each do |t|%>
+    <tr>
+        <td><%= link_to t.title, project_task_path(t.project_id, t) %></td>
+        <td><%= t.project.title %></td>
+        <td><%= t.due.to_s(:db)%></td>
+    </tr>
+    <% end %>
+  </table>
 
-<h4>【タスク】</h4>
-<table class="table">
-  <tr>
-    <td>タイトル</td>
-    <td>プロジェクト名</td>
-    <td>締め切り</td>
-  </tr>
-  <% @tasks.each do |t|%>
-  <tr>
-      <td><%= link_to t.title, project_task_path(t.project_id, t) %></td>
-      <td><%= t.project.title %></td>
-      <td><%= t.due.to_s(:db)%></td>
-  </tr>
-  <% end %>
-</table>
 
-<h4>【経理申請】</h4>
-<table class="table">
-  <tr>
-    <td>タイトル</td>
-    <td>申請日</td>
-    <td>申請状況</td>
-  </tr>
-  <% @accountings.each do |a|%>
-  <tr>
-      <td><%= link_to a.title, accounting_path(a) %></td>
-      <td><%= a.application_date %></td>
-      <td>
-        <% case a.status %>
-        <% when 1 %>
-          申請中
-        <% when 2 %>
-          承認
-        <% when 3 %>
-          却下
-        <% end %>
-      </td>
-  </tr>
+  <h4>【経理申請】</h4>
+  <table class="table">
+    <tr>
+      <td>タイトル</td>
+      <td>申請日</td>
+      <td>申請状況</td>
+    </tr>
+    <% @accountings.each do |a|%>
+    <tr>
+        <td><%= link_to a.title, accounting_path(a) %></td>
+        <td><%= a.application_date %></td>
+        <td>
+          <% case a.status %>
+          <% when 1 %>
+            申請中
+          <% when 2 %>
+            承認
+          <% when 3 %>
+            却下
+          <% end %>
+        </td>
+    </tr>
   <% end %>
-</table>
+  </table>
